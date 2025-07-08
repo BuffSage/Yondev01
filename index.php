@@ -18,7 +18,7 @@
   <img src="assets/images/ProustFP.jpg" alt="Hero image" class="hero-img" />
 
   <div class="hero-content">
-    <h1><b>Reclaim Time with YonDev<b></h1>
+    <h1><b>Reclaim Your Time with YonDev<b></h1>
     <a href="services.php" class="btn-tertiary">Explore Services</a>
   </div>
 </section>
