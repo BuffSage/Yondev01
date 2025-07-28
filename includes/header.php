@@ -6,7 +6,7 @@
   <meta name="description" content="YonDev helps businesses bridge better with custom digital solutions." />
   <meta name="author" content="YonDev" />
   <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Tektur&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png" />
