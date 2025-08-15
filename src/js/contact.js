@@ -1,8 +1,6 @@
 import { mountFrame } from './common.js';
 
-// 1) Make a free Formspree form and paste the endpoint here.
-//    Example: https://formspree.io/f/abcde123
-const FORM_ENDPOINT = "https://formspree.io/f/your_form_id"; // <-- replace this
+const FORM_ENDPOINT = "https://formspree.io/f/manbkaka"; // <-- replace this
 
 const content = `
 <section class="section">
