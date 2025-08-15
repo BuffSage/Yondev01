@@ -13,7 +13,12 @@ const content = `
   <div class="container hero-grid">
     <div class="hero-copy">
       <h1>Reclaim Your Time</h1>
-      <p class="sub">Streamlined sites and simple tooling that reduce busywork so you can focus on what matters.</p>
+      <p class="sub" style="
+            margin:0;
+            font-weight:400;            /* slightly higher weight (unbolded) */
+            font-size:clamp(15px, 3.2vw, 30px);
+            line-height:1.25;
+          ">Streamlined sites and simple tooling that reduce busywork so you can focus on what matters.</p>
       <div class="cta">
         <a class="btn primary" href="services.html">Explore Services</a>
         <a class="btn" href="contact.html">Get in Touch</a>
