@@ -29,6 +29,7 @@ export function mountFrame(content, active = "home"){
   <div class="container row">
     <small>© ${new Date().getFullYear()} Yondev. All rights reserved.</small>
     <small><a href="impressum.html">Impressum – Datenschutz</a></small>
+    <button class="btn theme-toggle" type="button">Dark Mode</button>
   </div>
 </footer>
 `;
@@ -71,4 +72,23 @@ export function mountFrame(content, active = "home"){
   function handleBreakpoint(e){ if(!e.matches) closeMenu(); }
   mq.addEventListener('change', handleBreakpoint);
   handleBreakpoint(mq);
+
+  // theme toggle logic
+  const themeBtn = document.querySelector('.theme-toggle');
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initial = stored || (prefersDark ? 'dark' : 'light');
+  setTheme(initial);
+
+  themeBtn?.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    localStorage.setItem('theme', next);
+  });
+
+  function setTheme(theme){
+    document.documentElement.setAttribute('data-theme', theme);
+    if(themeBtn) themeBtn.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+  }
 }
