@@ -65,9 +65,11 @@ const content = `
         <p>Mobile-first hero, sticky menu, and contact form — boosted calls and walk-ins.</p>
       </article>
       <article class="card">
-        <img src="src/assets/images/project2.jpg" alt="Project 2">
-        <h3>Contractor Portfolio</h3>
-        <p>Before/after gallery and simple lead capture. Clear structure, faster updates.</p>
+        <a href="https://ndnsanierung.de" target="_blank" rel="noopener">
+          <img src="src/assets/images/ndnsanierung.svg" alt="NDNSanierung project preview">
+        </a>
+        <h3><a href="https://ndnsanierung.de" target="_blank" rel="noopener">NDNSanierung.de</a></h3>
+        <p>Renovation company portfolio featuring gallery and quick contact options.</p>
       </article>
       <article class="card">
         <img src="src/assets/images/project3.jpg" alt="Project 3">
