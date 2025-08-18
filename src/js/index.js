@@ -59,22 +59,27 @@ const content = `
   <div class="container">
     <h2>Past Projects</h2>
     <div class="grid grid-3">
-      <article class="card">
-        <img src="src/assets/images/project1.jpg" alt="Project 1">
-        <h3>Local Cafe Landing</h3>
-        <p>Mobile-first hero, sticky menu, and contact form — boosted calls and walk-ins.</p>
+      <article class="card" tabindex="0">
+        <a href="https://yondev.de" target="_blank" rel="noopener">
+          <img src="https://image.thum.io/get/https://yondev.de" alt="yondev.de preview">
+        </a>
+        <h3><a href="https://yondev.de" target="_blank" rel="noopener">Gonco Chicken</a></h3>
+        <p>Playful landing for a crispy chicken brand.</p>
+        <p class="extra">Built for quick browsing with bold visuals and smooth navigation.</p>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0">
         <a href="https://ndnsanierung.de" target="_blank" rel="noopener">
-          <img src="src/assets/images/ndnsanierung.svg" alt="NDNSanierung project preview">
+          <img src="https://image.thum.io/get/https://ndnsanierung.de" alt="NDNSanierung.de preview">
         </a>
         <h3><a href="https://ndnsanierung.de" target="_blank" rel="noopener">NDNSanierung.de</a></h3>
-        <p>Renovation company portfolio featuring gallery and quick contact options.</p>
+        <p>Renovation specialist portfolio with gallery and contact.</p>
+        <p class="extra">Responsive showcase highlighting services, project imagery, and fast quote requests.</p>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0">
         <img src="src/assets/images/project3.jpg" alt="Project 3">
         <h3>Artist Microsite</h3>
         <p>Lightweight page with embedded video, socials, and mailing list.</p>
+        <p class="extra">Designed for quick updates and easy fan engagement.</p>
       </article>
     </div>
   </div>
@@ -95,3 +100,7 @@ const content = `
 `;
 
 mountFrame(content, 'home');
+
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', () => card.classList.toggle('expanded'));
+});
