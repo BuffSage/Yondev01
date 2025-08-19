@@ -91,4 +91,69 @@ export function mountFrame(content, active = "home"){
     document.documentElement.setAttribute('data-theme', theme);
     if(themeBtn) themeBtn.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
   }
+
+  // cookie consent banner
+  initCookieConsent();
+}
+
+function initCookieConsent(){
+  const stored = localStorage.getItem('cookie-consent');
+  if(stored) return;
+
+  const lang = document.documentElement.lang || 'en';
+  const policyLabel = lang.startsWith('de') ? 'Datenschutzerklärung' : 'Privacy Policy';
+
+  const banner = document.createElement('div');
+  banner.className = 'cookie-banner';
+  banner.innerHTML = `
+    <p>We use cookies to improve your experience.</p>
+    <div class="cookie-actions">
+      <button class="btn primary" data-action="accept">Accept</button>
+      <button class="btn" data-action="reject">Reject</button>
+      <button class="btn" data-action="settings">Cookie Settings</button>
+    </div>
+  `;
+  document.body.appendChild(banner);
+
+  const modal = document.createElement('div');
+  modal.className = 'cookie-modal hidden';
+  modal.innerHTML = `
+    <div class="cookie-modal-content">
+      <h2>Cookie Preferences</h2>
+      <p><a href="impressum.html" target="_blank" rel="noopener">${policyLabel}</a></p>
+      <div class="cookie-actions">
+        <button class="btn primary" data-action="accept">Accept</button>
+        <button class="btn" data-action="reject">Reject</button>
+      </div>
+      <button class="cookie-close" aria-label="Close">×</button>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  function setConsent(value){
+    localStorage.setItem('cookie-consent', value);
+    banner.remove();
+    modal.remove();
+  }
+
+  banner.addEventListener('click', e => {
+    const action = e.target.getAttribute('data-action');
+    if(!action) return;
+    if(action === 'settings'){
+      banner.style.display = 'none';
+      modal.classList.remove('hidden');
+    }
+    if(action === 'accept') setConsent('accepted');
+    if(action === 'reject') setConsent('rejected');
+  });
+
+  modal.addEventListener('click', e => {
+    const action = e.target.getAttribute('data-action');
+    if(action === 'accept') setConsent('accepted');
+    if(action === 'reject') setConsent('rejected');
+    if(e.target.classList.contains('cookie-close')){
+      modal.classList.add('hidden');
+      banner.style.display = '';
+    }
+  });
 }
