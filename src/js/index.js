@@ -25,30 +25,11 @@ const content = `
   </div>
 </section>
 
-<!-- Organize: photo covered by fade overlay with ONLY the given text (bigger, centered, normal weight) -->
-<section class="section" id="workflow">
+<!-- Curate section with big text and no background image -->
+<section class="section text-banner" id="workflow">
   <div class="container">
     <h2>Curate A Better Workflow</h2>
-
-    <figure class="organize-figure">
-      <img src="src/assets/images/TimeFrontKennyEliason-min.jpg" alt="Organized content with quick edits" loading="lazy" />
-      <figcaption class="visually-hidden">Organize — structure that makes edits easy</figcaption>
-
-      <!-- Center the overlay content both vertically & horizontally -->
-      <div class="organize-overlay" style="align-items:center; justify-content:center;">
-        <div class="organize-overlay-content" style="max-width:900px; text-align:center; align-items:center;">
-          <p class="sub" style="
-            margin:0;
-            font-weight:400;            /* normal weight (unbolded) */
-            font-size:clamp(20px, 3.2vw, 40px);
-            line-height:1.25;
-          ">
-            At YonDev, we streamline your business operations with smart organisation tools that save time and reduce stress.
-            Focus on your mission. We'll handle the digital housekeeping.
-          </p>
-        </div>
-      </div>
-    </figure>
+    <p class="banner-text">At YonDev, we streamline your business operations with smart organisation tools that save time and reduce stress. Focus on your mission. We'll handle the digital housekeeping.</p>
   </div>
 </section>
 
