@@ -32,6 +32,7 @@ export function mountFrame(content, active = "home"){
     <button class="btn theme-toggle" type="button">Dark Mode</button>
   </div>
 </footer>
+<button class="back-to-top" aria-label="Back to top">↑</button>
 `;
 
   // mount page content
@@ -91,6 +92,16 @@ export function mountFrame(content, active = "home"){
     document.documentElement.setAttribute('data-theme', theme);
     if(themeBtn) themeBtn.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
   }
+
+  // back to top button
+  const backBtn = document.querySelector('.back-to-top');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 300) backBtn?.classList.add('show');
+    else backBtn?.classList.remove('show');
+  });
+  backBtn?.addEventListener('click', () => {
+    window.scrollTo({ top:0, behavior:'smooth' });
+  });
 
   // cookie consent banner
   initCookieConsent();
