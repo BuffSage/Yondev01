@@ -2,15 +2,34 @@
 import { mountFrame } from './common.js';
 
 const content = `
-<section class="section">
+<section class="service-block">
   <div class="container">
-    <h2>Services</h2>
-    <div class="grid grid-3">
-      <article class="card"><h3>Landing Pages</h3><p>High‑converting, fast‑loading pages with clear messaging.</p></article>
-      <article class="card"><h3>Business Websites</h3><p>Multi‑page sites with SEO basics and simple content management.</p></article>
-      <article class="card"><h3>Lightweight Web Apps</h3><p>Tailored tools and dashboards to cut busywork.</p></article>
-    </div>
+    <h2>Business Websites</h2>
+    <ul>
+      <li><strong>Landing Pages</strong> High-converting, fast-loading pages with clear messaging.</li>
+      <li><strong>Dynamic Sites</strong> Multi-page experiences that grow with your business.</li>
+      <li><strong>Outreach Forms</strong> Simple forms that feed inquiries straight to your inbox.</li>
+    </ul>
   </div>
-</section>`;
+</section>
+<section class="service-block">
+  <div class="container">
+    <h2>Social Media Presence</h2>
+    <ul>
+      <li><strong>Social Media</strong> Consistent content and scheduling that keeps your brand visible.</li>
+      <li><strong>Google Business Profile</strong> Optimised listings that help local customers find you.</li>
+    </ul>
+  </div>
+</section>
+<section class="service-block">
+  <div class="container">
+    <h2>Digital Marketing</h2>
+    <ul>
+      <li><strong>SEO</strong> Keyword-focused content that climbs search rankings.</li>
+      <li><strong>Emails</strong> Targeted campaigns that turn subscribers into clients.</li>
+    </ul>
+  </div>
+</section>
+`;
 
 mountFrame(content, "services");
