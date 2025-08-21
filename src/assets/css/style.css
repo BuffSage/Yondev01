@@ -160,6 +160,7 @@ img{max-width:100%;display:block}
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
+  background-attachment:fixed;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -215,14 +216,36 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
   margin:0;
   font-size:clamp(24px,4vw,48px);
   font-weight:700;
-  background:linear-gradient(135deg, var(--accent), var(--primary));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:var(--primary);
 }
 .grid{ display:grid; gap:20px }
 .grid-3{ grid-template-columns:repeat(3,1fr) }
 .grid-2{ grid-template-columns:repeat(2,1fr) }
 @media (max-width:900px){ .grid-3,.grid-2{grid-template-columns:1fr} }
+
+.page-header{
+  padding:60px 0 20px;
+  text-align:center;
+}
+.page-title{
+  margin:0;
+  font-size:clamp(40px,8vw,72px);
+  position:relative;
+  display:inline-block;
+}
+.page-title::after{
+  content:"";
+  display:block;
+  height:4px;
+  background:var(--accent);
+  margin:8px auto 0;
+  width:0;
+  animation:underline-grow .6s ease forwards;
+}
+@keyframes underline-grow{
+  from{width:0}
+  to{width:60px}
+}
 
 .service-block{
   width:100%;
@@ -233,7 +256,7 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
   text-align:center;
   animation:fade-in-up .8s ease both;
 }
-.service-block:nth-of-type(odd){ background:var(--surface) }
+.service-block:nth-of-type(even){ background:var(--surface) }
 .service-block .container{
   display:flex;
   flex-direction:column;
@@ -253,7 +276,21 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
 .service-block li{
   margin:16px 0;
   font-size:clamp(18px,2vw,24px);
+  position:relative;
+  padding-left:36px;
+  transition:transform .3s;
 }
+.service-block li::before{
+  content:attr(data-icon);
+  position:absolute;
+  left:0;
+  top:0;
+  font-size:24px;
+  line-height:1;
+  transition:transform .3s;
+}
+.service-block li:hover{ transform:translateX(4px) }
+.service-block li:hover::before{ transform:scale(1.1) }
 .service-block li strong{
   display:block;
   font-size:clamp(20px,2.5vw,28px);
@@ -369,3 +406,30 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
   position:absolute; top:8px; right:12px; background:none; border:none; font-size:24px;
   cursor:pointer; color:var(--text);
 }
+
+/* Back to top button */
+.back-to-top{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:44px;
+  height:44px;
+  border:none;
+  border-radius:50%;
+  background:var(--accent);
+  color:#111;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s, transform .3s;
+  z-index:60;
+}
+.back-to-top.show{
+  opacity:1;
+  pointer-events:auto;
+}
+.back-to-top:hover{ transform:translateY(-3px) }
