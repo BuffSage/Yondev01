@@ -38,19 +38,3 @@ const content = `
 `;
 
 mountFrame(content, "services");
-
-const blocks = document.querySelectorAll('.service-block');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold:0.2 });
-
-blocks.forEach((block, i) => {
-  block.style.transitionDelay = `${i * 0.15}s`;
-  observer.observe(block);
-});
