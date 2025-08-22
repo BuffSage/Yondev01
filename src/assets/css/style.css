@@ -206,6 +206,10 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
   margin:0 0 20px; padding-bottom:10px;
   border-bottom:3px solid var(--accent); display:inline-block
 }
+#projects h2{
+  display:table;
+  margin:0 auto 20px;
+}
 .text-banner{
   display:flex;
   align-items:center;
@@ -226,6 +230,7 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
 .page-header{
   padding:60px 0 20px;
   text-align:center;
+  background:var(--surface);
 }
 .page-title{
   margin:0;
@@ -236,7 +241,7 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
 .page-title::after{
   content:"";
   display:block;
-  height:4px;
+  height:6px;
   background:var(--accent);
   margin:8px auto 0;
   width:0;
@@ -244,7 +249,7 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
 }
 @keyframes underline-grow{
   from{width:0}
-  to{width:60px}
+  to{width:100px}
 }
 
 .service-block{
@@ -255,12 +260,12 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
   justify-content:center;
   text-align:center;
   animation:fade-in-up .8s ease both;
-  background:#000;
-  color:#fff;
-}
-.service-block:nth-of-type(even){
   background:linear-gradient(135deg,var(--accent),#ffb020);
   color:#111;
+}
+.service-block:nth-of-type(even){
+  background:#000;
+  color:#fff;
 }
 .service-block .container{
   display:flex;

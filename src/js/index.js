@@ -83,9 +83,3 @@ mountFrame(content, 'home');
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', () => card.classList.toggle('expanded'));
 });
-
-const hero = document.querySelector('.hero.hero-filled');
-window.addEventListener('scroll', () => {
-  const offset = window.pageYOffset * 0.5;
-  if(hero) hero.style.backgroundPosition = `center calc(50% + ${offset}px)`;
-});
