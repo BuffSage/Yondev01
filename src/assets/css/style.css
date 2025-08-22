@@ -216,7 +216,7 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
   margin:0;
   font-size:clamp(24px,4vw,48px);
   font-weight:700;
-  color:var(--primary);
+  color:var(--text);
 }
 .grid{ display:grid; gap:20px }
 .grid-3{ grid-template-columns:repeat(3,1fr) }
@@ -255,8 +255,13 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
   justify-content:center;
   text-align:center;
   animation:fade-in-up .8s ease both;
+  background:#000;
+  color:#fff;
 }
-.service-block:nth-of-type(even){ background:var(--surface) }
+.service-block:nth-of-type(even){
+  background:linear-gradient(135deg,var(--accent),#ffb020);
+  color:#111;
+}
 .service-block .container{
   display:flex;
   flex-direction:column;
