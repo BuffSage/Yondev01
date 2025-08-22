@@ -160,12 +160,15 @@ img{max-width:100%;display:block}
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-  background-attachment:fixed;
+  background-attachment:scroll;
   display:flex;
   align-items:center;
   justify-content:center;
   color:#fff;
   text-align:center;
+}
+@media (pointer:fine) and (hover:hover){
+  .hero.hero-filled{background-attachment:fixed}
 }
 .hero.hero-filled::before{
   content:"";
@@ -262,10 +265,23 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
   animation:fade-in-up .8s ease both;
   background:linear-gradient(135deg,var(--accent),#ffb020);
   color:#111;
+  position:relative;
 }
 .service-block:nth-of-type(even){
   background:#000;
   color:#fff;
+}
+.service-block::before{
+  content:"";
+  position:absolute;
+  top:-60px;
+  left:0;
+  right:0;
+  height:120px;
+  background:inherit;
+  filter:blur(40px);
+  opacity:.6;
+  pointer-events:none;
 }
 .service-block .container{
   display:flex;
@@ -306,7 +322,7 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
   font-size:clamp(20px,2.5vw,28px);
 }
 @keyframes fade-in-up{
-  from{opacity:0; transform:translateY(30px);}
+  from{opacity:0; transform:translateY(15px);}
   to{opacity:1; transform:translateY(0);}
 }
 
