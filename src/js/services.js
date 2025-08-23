@@ -12,9 +12,9 @@ const content = `
   <div class="container">
     <h2>Business Websites</h2>
     <ul>
-      <li data-icon="🚀"><strong>Landing Pages</strong> High-converting, fast-loading pages with clear messaging.</li>
-      <li data-icon="💻"><strong>Dynamic Sites</strong> Multi-page experiences that grow with your business.</li>
-      <li data-icon="📬"><strong>Outreach Forms</strong> Simple forms that feed inquiries straight to your inbox.</li>
+      <li data-icon="🚀"><span><strong>Landing Pages</strong> High-converting, fast-loading pages with clear messaging.</span></li>
+      <li data-icon="💻"><span><strong>Dynamic Sites</strong> Multi-page experiences that grow with your business.</span></li>
+      <li data-icon="📬"><span><strong>Outreach Forms</strong> Simple forms that feed inquiries straight to your inbox.</span></li>
     </ul>
   </div>
 </section>
@@ -22,8 +22,8 @@ const content = `
   <div class="container">
     <h2>Social Media Presence</h2>
     <ul>
-      <li data-icon="📱"><strong>Social Media</strong> Consistent content and scheduling that keeps your brand visible.</li>
-      <li data-icon="📍"><strong>Google Business Profile</strong> Optimised listings that help local customers find you.</li>
+      <li data-icon="📱"><span><strong>Social Media</strong> Consistent content and scheduling that keeps your brand visible.</span></li>
+      <li data-icon="📍"><span><strong>Google Business Profile</strong> Optimised listings that help local customers find you.</span></li>
     </ul>
   </div>
 </section>
@@ -31,8 +31,8 @@ const content = `
   <div class="container">
     <h2>Digital Marketing</h2>
     <ul>
-      <li data-icon="🔍"><strong>SEO</strong> Keyword-focused content that climbs search rankings.</li>
-      <li data-icon="✉️"><strong>Emails</strong> Targeted campaigns that turn subscribers into clients.</li>
+      <li data-icon="🔍"><span><strong>SEO</strong> Keyword-focused content that climbs search rankings.</span></li>
+      <li data-icon="✉️"><span><strong>Emails</strong> Targeted campaigns that turn subscribers into clients.</span></li>
     </ul>
   </div>
 </section>
