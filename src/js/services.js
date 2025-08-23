@@ -1,14 +1,13 @@
 
 import { mountFrame } from './common.js';
-import { initBubblesBackground } from './bubbles.js';
 
 const content = `
-<section class="page-header blobbed" data-blob="bottom" data-intensity="1" data-tilt="0" data-skew="0" data-speed="0.8" data-bubbles data-density="48" data-min-radius="4" data-max-radius="12">
+<section class="page-header">
   <div class="container">
     <h1 class="page-title">Services</h1>
   </div>
 </section>
-<section class="service-block blobbed" data-blob="top bottom" data-intensity="1" data-tilt="0" data-skew="0" data-speed="0.6">
+<section class="service-block">
   <div class="container">
     <h2>Business Websites</h2>
     <ul>
@@ -18,7 +17,7 @@ const content = `
     </ul>
   </div>
 </section>
-<section class="service-block blobbed" data-blob="top bottom" data-intensity="1" data-tilt="0.05" data-skew="0" data-speed="0.6">
+<section class="service-block">
   <div class="container">
     <h2>Social Media Presence</h2>
     <ul>
@@ -27,7 +26,7 @@ const content = `
     </ul>
   </div>
 </section>
-<section class="service-block blobbed" data-blob="top" data-intensity="1" data-tilt="0" data-skew="0" data-speed="0.6">
+<section class="service-block">
   <div class="container">
     <h2>Digital Marketing</h2>
     <ul>
@@ -39,5 +38,3 @@ const content = `
 `;
 
 mountFrame(content, "services");
-initBubblesBackground();
-initBlobSections();
