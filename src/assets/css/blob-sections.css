@@ -1,0 +1,51 @@
+:root {
+  --bg: #ffffff;
+  --accent: #ffcf40;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0d1117; }
+}
+[data-theme="dark"] { --bg: #0d1117; }
+[data-theme="light"] { --bg: #ffffff; }
+
+.blobbed {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* space for blobs before JS injects SVGs */
+.blobbed[data-blob*="top"],
+.blob-top { padding-top: 11.11%; }
+.blobbed[data-blob*="bottom"],
+.blob-bottom { padding-bottom: 11.11%; }
+
+.blob-wrap {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0;
+  pointer-events: none;
+}
+.blob-top .blob-wrap { top: 0; }
+.blob-bottom .blob-wrap { bottom: 0; }
+
+.blob-wrap::before {
+  content: "";
+  display: block;
+  padding-bottom: 11.11%;
+}
+
+.blob-wrap svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.blob-top svg { transform: scaleY(-1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .blob-wrap svg { animation: none; }
+}
