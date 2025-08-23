@@ -1,8 +1,9 @@
 
 import { mountFrame } from './common.js';
+import { initBubblesBackground } from './bubbles.js';
 
 const content = `
-<section class="page-header">
+<section class="page-header" data-bubbles data-density="48" data-min-radius="4" data-max-radius="12">
   <div class="container">
     <h1 class="page-title">Services</h1>
   </div>
@@ -38,3 +39,4 @@ const content = `
 `;
 
 mountFrame(content, "services");
+initBubblesBackground();
