@@ -6,68 +6,18 @@
   <title>Yondev: Build Better</title>
   <link rel="icon" href="src/assets/images/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="src/assets/css/style.css" />
-  <link rel="stylesheet" href="/assets/services-blobs.css"/>
+  <link rel="stylesheet" href="src/assets/css/blob-sections.css" />
 
    <!-- Manrope (modern, legible) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
+  <link 
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap"
     rel="stylesheet" />
 
 </head>
 <body>
-  <!-- HERO -->
-  <section class="section section--hero" id="services-hero">
-    <div class="container">
-      <h1>Services</h1>
-      <p>Short hero copy about what I offer.</p>
-    </div>
-  </section>
-
-  <!-- BLOB A: HERO → CONTENT -->
-  <div class="blob-wrap blob-top" aria-hidden="true">
-    <svg class="blob-svg" viewBox="0 0 1440 220" preserveAspectRatio="none" role="img" focusable="false">
-      <defs>
-        <linearGradient id="blobA" x1="0" y1="0" x2="0" y2="1">
-          <stop class="g0" offset="0%"/>
-          <stop class="g1" offset="55%"/>
-          <stop class="g2" offset="100%"/>
-        </linearGradient>
-      </defs>
-      <path d="M0,80 C140,120 300,40 480,76 C700,120 900,10 1120,60 C1260,92 1350,130 1440,116 L1440,220 L0,220 Z" fill="url(#blobA)"/>
-    </svg>
-  </div>
-
-  <!-- MAIN CONTENT -->
-  <section class="section section--content" id="services-content">
-    <div class="container">
-      <h2>What I can do for you</h2>
-      <p>Service offerings, features, pricing, etc.</p>
-    </div>
-  </section>
-
-  <!-- BLOB B: CONTENT → CTA/FOOTER -->
-  <div class="blob-wrap blob-bottom" aria-hidden="true">
-    <svg class="blob-svg" viewBox="0 0 1440 220" preserveAspectRatio="none" role="img" focusable="false">
-      <defs>
-        <linearGradient id="blobB" x1="0" y1="0" x2="0" y2="1">
-          <stop class="g0" offset="0%"/>
-          <stop class="g1" offset="60%"/>
-          <stop class="g2" offset="100%"/>
-        </linearGradient>
-      </defs>
-      <path d="M0,140 C120,110 260,160 420,128 C650,84 840,200 1040,160 C1220,124 1340,60 1440,72 L1440,0 L0,0 Z" fill="url(#blobB)"/>
-    </svg>
-  </div>
-
-  <!-- CTA / FOOTER -->
-  <section class="section section--cta" id="services-cta">
-    <div class="container">
-      <h2>Ready to start?</h2>
-      <p>CTA text and button.</p>
-    </div>
-  </section>
-
+  <script src="src/js/blob-sections.js"></script>
+  <script type="module" src="src/js/services.js"></script>
 </body>
 </html>
