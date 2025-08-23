@@ -276,39 +276,29 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
 
 .service-block{
   width:100%;
-  padding:80px 0;
+  padding:120px 0;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
   animation:fade-in-up .8s ease both;
-  background:linear-gradient(135deg,var(--accent),#ffb020);
-  color:#111;
+  background:var(--bg);
+  color:var(--text);
   position:relative;
 }
 .service-block:nth-of-type(even){
-  background:#000;
-  color:#fff;
+  background:var(--bg);
+  color:var(--text);
 }
-.service-block::before{
-  content:"";
-  position:absolute;
-  top:-60px;
-  left:0;
-  right:0;
-  height:120px;
-  background:inherit;
-  filter:blur(40px);
-  opacity:.6;
-  pointer-events:none;
-}
+.service-block::before{display:none}
 .service-block .container{
   display:flex;
   flex-direction:column;
   align-items:center;
+  gap:40px;
 }
 .service-block h2{
-  margin:0 0 20px;
+  margin:0;
   border:none;
   font-size:clamp(32px,5vw,56px);
 }
@@ -317,28 +307,39 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
   padding:0;
   margin:0;
   max-width:800px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
 }
 .service-block li{
-  margin:16px 0;
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
   font-size:clamp(18px,2vw,24px);
-  position:relative;
-  padding-left:36px;
-  transition:transform .3s;
+  opacity:0;
+  transform:translateY(10px);
+  animation:fade-in-up .6s ease forwards;
 }
+.service-block li:nth-child(1){animation-delay:.1s}
+.service-block li:nth-child(2){animation-delay:.2s}
+.service-block li:nth-child(3){animation-delay:.3s}
+.service-block li:nth-child(4){animation-delay:.4s}
+.service-block li:nth-child(5){animation-delay:.5s}
+.service-block li:nth-child(6){animation-delay:.6s}
 .service-block li::before{
   content:attr(data-icon);
-  position:absolute;
-  left:0;
-  top:0;
-  font-size:24px;
+  font-size:28px;
   line-height:1;
+  flex-shrink:0;
   transition:transform .3s;
 }
-.service-block li:hover{ transform:translateX(4px) }
+.service-block li:hover{ transform:translateY(-4px) }
 .service-block li:hover::before{ transform:scale(1.1) }
 .service-block li strong{
   display:block;
+  margin-bottom:4px;
   font-size:clamp(20px,2.5vw,28px);
+  color:var(--accent);
 }
 @keyframes fade-in-up{
   from{opacity:0; transform:translateY(15px);}
