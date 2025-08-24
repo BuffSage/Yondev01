@@ -55,10 +55,12 @@ const content = `
         <p class="extra">Responsive showcase highlighting services, project imagery, and fast quote requests.</p>
       </article>
       <article class="card" tabindex="0">
-        <img src="src/assets/images/project3.jpg" alt="Project 3">
-        <h3>Artist Microsite</h3>
-        <p>Lightweight page with embedded video, socials, and mailing list.</p>
-        <p class="extra">Designed for quick updates and easy fan engagement.</p>
+        <a href="https://flopriverquest.com/" target="_blank" rel="noopener">
+          <img src="https://image.thum.io/get/https://flopriverquest.com/" alt="Flop: River Quest preview">
+        </a>
+        <h3><a href="https://flopriverquest.com/" target="_blank" rel="noopener">Flop: River Quest</a></h3>
+        <p>Dynamic landing page with current developments of mobile game app.</p>
+        <p class="extra">Stay updated with the latest features and progress.</p>
       </article>
     </div>
   </div>
