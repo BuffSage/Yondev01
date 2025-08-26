@@ -68,13 +68,18 @@ img{max-width:100%;display:block}
   display:flex;
   align-items:center;
   gap:10px;
-  font-weight:700
+  font-weight:700;
 }
-.brand .dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:var(--accent)
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  max-width: 40px;
+  max-height: 40px;
+  object-fit: contain;
+  margin-right: 6px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 .nav ul{
   display:flex;

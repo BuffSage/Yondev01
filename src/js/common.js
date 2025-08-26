@@ -1,9 +1,11 @@
 export function mountFrame(content, active = "home"){
+
   document.body.innerHTML = `
 <header class="site-header">
   <nav class="container nav">
     <a href="index.html" class="brand" aria-label="Go to homepage">
-      <span class="dot"></span> Yondev
+      <img src="/yondev.com/src/assets/images/YonDevLogo01.png" alt="Yondev Logo" class="brand-logo" width="36" height="36" style="display:inline-block;vertical-align:middle;max-width:40px;max-height:40px;object-fit:contain;" />
+      Yondev
     </a>
     <ul>
       <li><a href="index.html" ${active==="home"?"aria-current='page'":""}>Home</a></li>
