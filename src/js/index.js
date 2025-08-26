@@ -19,8 +19,8 @@ const content = `
           line-height:1.25;
         ">Streamlined sites and simple tooling that reduce busywork so you can focus on what matters.</p>
     <div class="cta">
-      <a class="btn primary" href="services.html">Explore Services</a>
-      <a class="btn" href="contact.html">Get in Touch</a>
+  <a class="btn primary" href="services.html">Explore Services</a>
+  <a class="btn secondary" href="contact.html">Get in Touch</a>
     </div>
   </div>
 </section>
