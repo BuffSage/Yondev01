@@ -164,11 +164,27 @@ function initCookieConsent(){
   modal.innerHTML = `
     <div class="cookie-modal-content">
       <h2>Cookie Preferences</h2>
-      <p><a href="impressum.html" target="_blank" rel="noopener">${policyLabel}</a></p>
-      <div class="cookie-actions">
-        <button class="btn primary" data-action="accept">Accept</button>
-        <button class="btn" data-action="reject">Reject</button>
-      </div>
+      <p>Manage your cookie settings below. You can always change these later.</p>
+      <form id="cookie-settings-form" style="display:flex;flex-direction:column;gap:16px;margin:18px 0;">
+        <label style="display:flex;align-items:center;gap:10px;">
+          <input type="checkbox" checked disabled style="accent-color:var(--accent);" />
+          <span><strong>Essential Cookies</strong><br><small style="font-weight:400;">Required for site functionality.</small></span>
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;">
+          <input type="checkbox" id="analytics-cookies" style="accent-color:var(--accent);" />
+          <span><strong>Analytics Cookies</strong><br><small style="font-weight:400;">Help us understand how visitors use the site.</small></span>
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;">
+          <input type="checkbox" id="marketing-cookies" style="accent-color:var(--accent);" />
+          <span><strong>Marketing Cookies</strong><br><small style="font-weight:400;">Used to show you relevant offers and ads.</small></span>
+        </label>
+        <div class="cookie-actions" style="margin-top:10px;">
+          <button class="btn primary" type="submit">Save Preferences</button>
+          <button class="btn" data-action="accept" type="button">Accept All</button>
+          <button class="btn" data-action="reject" type="button">Reject All</button>
+        </div>
+      </form>
+      <p style="margin-top:10px;"><a href="impressum.html" target="_blank" rel="noopener">${policyLabel}</a></p>
       <button class="cookie-close" aria-label="Close">×</button>
     </div>
   `;
@@ -199,5 +215,11 @@ function initCookieConsent(){
       modal.classList.add('hidden');
       banner.style.display = '';
     }
+  });
+  // Save preferences button
+  modal.querySelector('#cookie-settings-form')?.addEventListener('submit', e => {
+    e.preventDefault();
+    // You can expand this logic to store preferences for analytics/marketing
+    setConsent('custom');
   });
 }
