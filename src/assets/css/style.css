@@ -1,3 +1,5 @@
+  text-align: center;
+}
 /* --- Cookie Consent Modal Custom Checkbox Styles --- */
 .cookie-modal-content input[type="checkbox"] {
   appearance: none;
@@ -91,7 +93,8 @@ img{max-width:100%;display:block}
   position:sticky;
   top:0;
   z-index:50;
-  background:#fff;
+  background: var(--header-bg);
+  color: var(--text);
   border-bottom:1px solid var(--line);
 }
 .nav{
@@ -215,6 +218,8 @@ img{max-width:100%;display:block}
   content:"";
   position:absolute; inset:0;
   background:linear-gradient(180deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,.18) 60%, rgba(0,0,0,.7) 100%);
+  z-index:0;
+  pointer-events:none;
 }
 @media (max-width:900px){
   .hero.hero-filled::before{
@@ -285,7 +290,28 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
   max-width:60ch;
   margin:0 0 20px
 }
-.hero.hero-filled .sub{ color:#fff }
+.hero.hero-filled .sub {
+  color: #fff;
+  opacity: 1;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18), 0 1px 0 #000;
+}
+.hero.hero-filled .hero-center {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  color: #fff;
+}
+.hero.hero-filled .hero-center * {
+  color: #fff;
+  opacity: 1;
+  pointer-events: auto;
+}
+.hero.hero-filled .btn, .hero.hero-filled .btn.primary {
+  opacity: 1;
+  pointer-events: auto;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  border-color: transparent;
+}
 .hero-center .cta{ justify-content:center }
 
 .cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:16px }
@@ -295,24 +321,93 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
   border:1px solid var(--line);
   background:var(--surface); color:var(--text);
   box-shadow:var(--shadow); cursor:pointer; font-weight:600;
-  transition:transform .15s ease, box-shadow .15s ease, background .15s ease
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+/* Black secondary button for hero */
+.btn.secondary {
+  background: #111;
+  color: #fff;
+  border: 1.5px solid #fff;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.btn.secondary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 2;
+}
+.btn.secondary:hover, .btn.secondary:focus {
+  background: #222;
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+}
 }
 .btn:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(10,12,14,.12); background:var(--hover) }
-
-/* gold primary button */
 .btn.primary{
   background:linear-gradient(135deg, var(--accent), #ffb020);
-  border-color:transparent; color:#111
+  border-color:transparent;
+  color:#111 !important;
 }
 
-.section{ padding:24px 0 64px }
-.section h2{
-  margin:0 0 20px; padding-bottom:10px;
-  border-bottom:3px solid var(--accent); display:inline-block
+/* Universal button hover effect */
+.btn:hover, .btn.primary:hover, .btn.secondary:hover {
+  filter: brightness(0.92) contrast(1.08);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(10,12,14,.16);
+  text-decoration: none;
 }
-#projects h2{
-  display:table;
-  margin:0 auto 20px;
+}
+
+.section {
+  padding:64px 0 96px;
+}
+
+/* Add extra space above the text-banner section (Curate A Better Workflow) */
+.text-banner {
+  margin-top: 48px;
+  margin-bottom: 96px;
+}
+
+/* Much bigger space between Past Projects and Bridge Better */
+#projects.section {
+  margin-bottom: 120px;
+}
+
+/* Much bigger space between Bridge Better and footer */
+#cta.section {
+  margin-bottom: 120px;
+}
+}
+.section h2{
+  margin:0 0 36px 0;
+  padding-bottom:12px;
+  border-bottom:3px solid var(--accent);
+  display:inline-block;
+}
+
+/* Always show yellow underline for Curate and Past Projects titles */
+#workflow h2,
+#projects h2 {
+  border-bottom:3px solid var(--accent) !important;
+  display:inline-block;
+  padding-bottom:12px;
+  margin: 0 auto 36px auto;
+}
+
+#workflow .container {
+  text-align: center;
+}
+
+#projects .container {
+  text-align: center;
+}
 }
 .text-banner{
   display:flex;
@@ -436,8 +531,18 @@ h1{ font-size:clamp(32px,6vw,56px); line-height:1.1; margin:14px 0 10px }
   border-radius:18px;
   height:100%;
   box-shadow:var(--shadow);
-  cursor:pointer;
   transition:transform .3s ease, box-shadow .3s ease;
+}
+
+/* Remove hover effect from CTA card, only button hovers */
+#cta .card {
+  cursor:default;
+  transition:none;
+}
+#cta .card:hover, #cta .card:focus-within, #cta .card.expanded {
+  transform:none;
+  box-shadow:var(--shadow);
+}
 }
 .card:hover,
 .card:focus-within,
