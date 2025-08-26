@@ -1,10 +1,41 @@
+  // Sticky hide header: hide when header bottom reaches hero bottom
+  window.requestAnimationFrame(() => {
+    const header = document.querySelector('.site-header');
+    const hero = document.querySelector('.hero');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    function onScrollHideHeader() {
+      if (!header || !hero) return;
+      const headerRect = header.getBoundingClientRect();
+      const heroRect = hero.getBoundingClientRect();
+      // Restore to original: hide when header bottom reaches hero bottom
+      if (headerRect.bottom >= heroRect.bottom) {
+        header.classList.add('hide-header');
+      } else if (window.scrollY <= 0) {
+        header.classList.remove('hide-header');
+      } else if (window.scrollY < lastScrollY) {
+        // Scrolling up
+        header.classList.remove('hide-header');
+      }
+      lastScrollY = window.scrollY;
+      ticking = false;
+    }
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(onScrollHideHeader);
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  });
 export function mountFrame(content, active = "home"){
+
 
   document.body.innerHTML = `
 <header class="site-header">
   <nav class="container nav">
     <a href="index.html" class="brand" aria-label="Go to homepage">
-      <img src="/yondev.com/src/assets/images/YonDevLogo01.png" alt="Yondev Logo" class="brand-logo" width="36" height="36" style="display:inline-block;vertical-align:middle;max-width:40px;max-height:40px;object-fit:contain;" />
+      <img src="src/assets/images/YonDevLogo01.png" alt="Yondev Logo" class="brand-logo" width="40" height="40" />
       Yondev
     </a>
     <ul>
