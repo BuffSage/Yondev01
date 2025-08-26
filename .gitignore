@@ -1,8 +1,2 @@
-# Ignore all images
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.svg
-*.ico
-*.webp
+# Ignore local-only images
+src/assets/images_local/
