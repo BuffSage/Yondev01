@@ -96,13 +96,18 @@ img{max-width:100%;display:block}
   background: var(--header-bg);
   color: var(--text);
   border-bottom:1px solid var(--line);
+  min-height: 64px;
+  display: flex;
+  align-items: center;
 }
 .nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:14px 0;
-  position:relative
+  position:relative;
+  width: 100%;
+  min-height: 48px;
 }
 .brand{
   display:flex;
@@ -240,10 +245,14 @@ img{max-width:100%;display:block}
   .site-header {
     padding: 0 4px;
     min-height: 56px;
+    display: flex;
+    align-items: center;
   }
   .nav {
     padding: 0 2px;
     gap: 4px;
+    min-height: 40px;
+    width: 100%;
   }
   .menu-toggle {
     width: 36px;
