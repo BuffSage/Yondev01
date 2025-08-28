@@ -37,30 +37,22 @@ const content = `
 <section class="section" id="projects">
   <div class="container">
     <h2>Past Projects</h2>
-    <div class="grid grid-3">
-      <article class="card" tabindex="0">
-        <a href="https://yondev.de" target="_blank" rel="noopener">
-          <img src="https://image.thum.io/get/https://yondev.de" alt="yondev.de preview">
-        </a>
-        <h3><a href="https://yondev.de" target="_blank" rel="noopener">Gonco Chicken</a></h3>
-        <p>Playful landing for a crispy chicken brand.</p>
-        <p class="extra">Built for quick browsing with bold visuals and smooth navigation.</p>
-      </article>
+    <div class="grid grid-2">
       <article class="card" tabindex="0">
         <a href="https://ndnsanierung.de" target="_blank" rel="noopener">
-          <img src="https://image.thum.io/get/https://ndnsanierung.de" alt="NDNSanierung.de preview">
+          <img src="https://mini.s-shot.ru/1024x768/PNG/1024/Z100/?https://ndnsanierung.de" alt="NDNSanierung.de preview">
         </a>
         <h3><a href="https://ndnsanierung.de" target="_blank" rel="noopener">NDNSanierung.de</a></h3>
-        <p>Renovation specialist portfolio with gallery and contact.</p>
+        <p>Full business website and logo design for an asbestos and pollutant remediation company.</p>
         <p class="extra">Responsive showcase highlighting services, project imagery, and fast quote requests.</p>
       </article>
       <article class="card" tabindex="0">
         <a href="https://flopriverquest.com/" target="_blank" rel="noopener">
-          <img src="https://image.thum.io/get/https://flopriverquest.com/" alt="Flop: River Quest preview">
+          <img src="https://mini.s-shot.ru/1024x768/PNG/1024/Z100/?https://flopriverquest.com" alt="Flop: River Quest preview">
         </a>
         <h3><a href="https://flopriverquest.com/" target="_blank" rel="noopener">Flop: River Quest</a></h3>
-        <p>Dynamic landing page with current developments of mobile game app.</p>
-        <p class="extra">Stay updated with the latest features and progress.</p>
+        <p>Landing page for a developing mobile game</p>
+        <p class="extra">Interactive game showcase featuring character art, gameplay mechanics, and download links across platforms.</p>
       </article>
     </div>
   </div>
