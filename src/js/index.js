@@ -7,20 +7,89 @@ import { mountFrame } from './common.js';
  * - Projects:      src/assets/images/project1.jpg, project2.jpg, project3.jpg
  */
 
-const content = `
+const texts = {
+  en: {
+    hero: {
+      title: "Reclaim Your Time",
+      sub: "Streamlined sites and simple tooling that reduce busywork so you can focus on what matters.",
+      cta1: "Explore Services",
+      cta2: "Get in Touch"
+    },
+    workflow: {
+      title: "Curate A Better Workflow",
+      text: "At YonDev, we streamline your business operations with smart organisation tools that save time and reduce stress. Focus on your mission. We'll handle the digital housekeeping."
+    },
+    projects: {
+      title: "Past Projects",
+      ndn: {
+        desc: "Full business website and logo design for an asbestos and pollutant remediation company.",
+        extra: "Responsive showcase highlighting services, project imagery, and fast quote requests."
+      },
+      flop: {
+        desc: "Custom digital solution tailored to specific business needs.",
+        extra: "Streamlined interface and optimized performance for better user engagement."
+      }
+    },
+    cta: {
+      title: "Ready to Start?", // Simplified title
+      btn: "Get in Touch",
+      steps: [
+        { num: "01", title: "Connect", desc: "Send us a message about your goals." },
+        { num: "02", title: "Plan", desc: "We propose a tailored solution." },
+        { num: "03", title: "Build", desc: "We launch your new digital presence." }
+      ]
+    }
+  },
+  de: {
+    hero: {
+      title: "Gewinnen Sie Zeit zurück",
+      sub: "Effiziente Websites und einfache Tools, die unnötige Arbeit reduzieren – damit Sie sich auf das Wesentliche konzentrieren können.",
+      cta1: "Leistungen ansehen",
+      cta2: "Kontaktieren Sie uns"
+    },
+    workflow: {
+      title: "Ein besserer Workflow",
+      text: "Bei YonDev optimieren wir Ihre Geschäftsabläufe mit intelligenten Organisationstools, die Zeit sparen und Stress reduzieren. Konzentrieren Sie sich auf Ihre Mission. Wir kümmern uns um die digitale Ordnung."
+    },
+    projects: {
+      title: "Vergangene Projekte",
+      ndn: {
+        desc: "Komplette Firmenwebsite und Logo-Design für ein Unternehmen zur Asbest- und Schadstoffsanierung.",
+        extra: "Responsives Showcase mit Dienstleistungen, Projektbildern und schneller Angebotsanfrage."
+      },
+      flop: {
+        desc: "Maßgeschneiderte digitale Lösung für spezifische Geschäftsanforderungen.",
+        extra: "Optimierte Benutzeroberfläche und Performance für bessere Nutzerbindung."
+      }
+    },
+    cta: {
+      title: "Bereit für den Start?",
+      btn: "Kontakt aufnehmen",
+      steps: [
+        { num: "01", title: "Kontakt", desc: "Schreiben Sie uns Ihre Ziele." },
+        { num: "02", title: "Konzept", desc: "Wir erstellen einen maßgeschneiderten Plan." },
+        { num: "03", title: "Start", desc: "Wir realisieren Ihre digitale Vision." }
+      ]
+    }
+  }
+};
+
+const getContent = (lang) => {
+  const t = texts[lang];
+  return `
 <!-- Filled header hero (uses background image) -->
 <section class="hero hero-filled" id="home" style="background-image:url('src/assets/images/ProustFP.jpg')">
   <div class="hero-center">
-    <h1>Reclaim Your Time</h1>
+    <h1>${t.hero.title}</h1>
     <p class="sub" style="
           margin:0;
           font-weight:400;
           font-size:clamp(15px, 3.2vw, 30px);
           line-height:1.25;
-        ">Streamlined sites and simple tooling that reduce busywork so you can focus on what matters.</p>
+        ">${t.hero.sub}</p>
     <div class="cta">
-  <a class="btn primary" href="services.html">Explore Services</a>
-  <a class="btn secondary" href="contact.html">Get in Touch</a>
+  <a class="btn primary" href="services.html">${t.hero.cta1}</a>
+  <a class="btn secondary" href="contact.html">${t.hero.cta2}</a>
     </div>
   </div>
 </section>
@@ -28,51 +97,72 @@ const content = `
 <!-- Curate section with big text and no background image -->
 <section class="section text-banner" id="workflow">
   <div class="container">
-    <h2>Curate A Better Workflow</h2>
-    <p class="banner-text">At YonDev, we streamline your business operations with smart organisation tools that save time and reduce stress. Focus on your mission. We'll handle the digital housekeeping.</p>
+    <h2>${t.workflow.title}</h2>
+    <p class="banner-text" style="
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin-top: 24px;
+    ">
+      ${t.workflow.text}
+    </p>
   </div>
 </section>
 
 <!-- Past Projects -->
 <section class="section" id="projects">
   <div class="container">
-    <h2>Past Projects</h2>
+    <h2>${t.projects.title}</h2>
     <div class="grid grid-2">
       <article class="card" tabindex="0">
         <a href="https://ndnsanierung.de" target="_blank" rel="noopener">
-          <img src="https://mini.s-shot.ru/1024x768/PNG/1024/Z100/?https://ndnsanierung.de" alt="NDNSanierung.de preview">
+          <img src="src/assets/images/ndnsanierung-logo.png" alt="NDNSanierung.de preview">
         </a>
         <h3><a href="https://ndnsanierung.de" target="_blank" rel="noopener">NDNSanierung.de</a></h3>
-        <p>Full business website and logo design for an asbestos and pollutant remediation company.</p>
-        <p class="extra">Responsive showcase highlighting services, project imagery, and fast quote requests.</p>
+        <p>${t.projects.ndn.desc}</p>
+        <p class="extra">${t.projects.ndn.extra}</p>
       </article>
       <article class="card" tabindex="0">
-        <a href="https://flopriverquest.com/" target="_blank" rel="noopener">
-          <img src="https://mini.s-shot.ru/1024x768/PNG/1024/Z100/?https://flopriverquest.com" alt="Flop: River Quest preview">
-        </a>
-        <h3><a href="https://flopriverquest.com/" target="_blank" rel="noopener">Flop: River Quest</a></h3>
-        <p>Landing page for a developing mobile game</p>
-        <p class="extra">Interactive game showcase featuring character art, gameplay mechanics, and download links across platforms.</p>
+        <!-- No photo for this tile as requested -->
+        <h3><a href="#" rel="noopener">Flopriverquest</a></h3>
+        <p>${t.projects.flop.desc}</p>
+        <p class="extra">${t.projects.flop.extra}</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section" id="cta">
-  <div class="container">
-    <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
-      <div>
-        <h3 style="margin:0 0 6px;">Ready to Bridge Better?</h3>
-        <p style="margin:0;color:var(--muted)">Tell me what you need; I’ll propose a simple, time-saving plan.</p>
-      </div>
-      <a class="btn primary" href="contact.html">Get in Touch</a>
+<!-- Improved Flow / CTA Section -->
+<section class="section" id="cta" style="background:linear-gradient(to bottom, var(--bg), var(--surface));">
+  <div class="container" style="text-align:center;">
+    <h2 style="margin-bottom:60px;">${t.cta.title}</h2>
+    
+    <!-- 3-Step Flow -->
+    <div style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+      text-align: left;
+    ">
+      ${t.cta.steps.map(step => `
+        <div style="position:relative; padding-left: 20px;">
+           <!-- Vertical line visual -->
+           <div style="position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--line); border-radius:2px;"></div>
+           <div style="color:var(--accent); font-weight:800; font-size:14px; margin-bottom:8px;">${step.num}</div>
+           <h3 style="margin:0 0 8px; font-size:20px;">${step.title}</h3>
+           <p style="margin:0; font-size:15px; color:var(--muted);">${step.desc}</p>
+        </div>
+      `).join('')}
     </div>
+
+    <!-- Final Action -->
+    <a class="btn primary" href="contact.html" style="font-size: 1.2rem; padding: 18px 48px;">${t.cta.btn}</a>
   </div>
 </section>
 `;
+};
 
-mountFrame(content, 'home');
+mountFrame(getContent, 'home');
 
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', () => card.classList.toggle('expanded'));

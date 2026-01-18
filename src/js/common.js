@@ -1,57 +1,95 @@
-  // Sticky hide header: hide when header bottom reaches hero bottom
-  window.requestAnimationFrame(() => {
-    const header = document.querySelector('.site-header');
-    const hero = document.querySelector('.hero');
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-    function onScrollHideHeader() {
-      if (!header || !hero) return;
-      const headerRect = header.getBoundingClientRect();
-      const heroRect = hero.getBoundingClientRect();
-      // Restore to original: hide when header bottom reaches hero bottom
-      if (headerRect.bottom >= heroRect.bottom) {
-        header.classList.add('hide-header');
-      } else if (window.scrollY <= 0) {
-        header.classList.remove('hide-header');
-      } else if (window.scrollY < lastScrollY) {
-        // Scrolling up
-        header.classList.remove('hide-header');
-      }
-      lastScrollY = window.scrollY;
-      ticking = false;
+// Sticky hide header: hide when header bottom reaches hero bottom
+window.requestAnimationFrame(() => {
+  const header = document.querySelector('.site-header');
+  const hero = document.querySelector('.hero');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+  function onScrollHideHeader() {
+    if (!header || !hero) return;
+    const headerRect = header.getBoundingClientRect();
+    const heroRect = hero.getBoundingClientRect();
+    // Restore to original: hide when header bottom reaches hero bottom
+    if (headerRect.bottom >= heroRect.bottom) {
+      header.classList.add('hide-header');
+    } else if (window.scrollY <= 0) {
+      header.classList.remove('hide-header');
+    } else if (window.scrollY < lastScrollY) {
+      // Scrolling up
+      header.classList.remove('hide-header');
     }
-    function onScroll() {
-      if (!ticking) {
-        window.requestAnimationFrame(onScrollHideHeader);
-        ticking = true;
-      }
+    lastScrollY = window.scrollY;
+    ticking = false;
+  }
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(onScrollHideHeader);
+      ticking = true;
     }
-    window.addEventListener('scroll', onScroll, { passive: true });
-  });
-export function mountFrame(content, active = "home"){
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+});
 
+// Simple translation state
+export function getLang() {
+  return localStorage.getItem('yondev-lang') || 'en';
+}
+
+export function mountFrame(contentRaw, active = "home") {
+  const lang = getLang();
+
+  // If contentRaw is a function, it implies it needs the language to render
+  const content = typeof contentRaw === 'function' ? contentRaw(lang) : contentRaw;
+
+  // Translations for Nav and Footer
+  const t = {
+    en: {
+      home: "Home",
+      services: "Services",
+      blog: "Blog",
+      contact: "Contact",
+      rights: `© ${new Date().getFullYear()} Yondev. All rights reserved.`,
+      impressum: "Impressum – Datenschutz",
+      themeDark: "Dark Mode",
+      themeLight: "Light Mode"
+    },
+    de: {
+      home: "Startseite",
+      services: "Leistungen",
+      blog: "Blog",
+      contact: "Kontakt",
+      rights: `© ${new Date().getFullYear()} Yondev. Alle Rechte vorbehalten.`,
+      impressum: "Impressum – Datenschutz",
+      themeDark: "Dunkelmodus",
+      themeLight: "Lichtmodus"
+    }
+  }[lang];
 
   document.body.innerHTML = `
 <header class="site-header">
   <nav class="container nav">
-    <a href="index.html" class="brand" aria-label="Go to homepage">
+    <a href="index.html" class="brand" aria-label="${lang === 'de' ? 'Zur Startseite' : 'Go to homepage'}">
       <img src="src/assets/images/YonDevLogo01.png" alt="Yondev Logo" class="brand-logo" width="40" height="40" />
       Yondev
     </a>
     <ul>
-      <li><a href="index.html" ${active==="home"?"aria-current='page'":""}>Home</a></li>
-      <li><a href="services.html" ${active==="services"?"aria-current='page'":""}>Services</a></li>
-      <li><a href="blog.html" ${active==="blog"?"aria-current='page'":""}>Blog</a></li>
-      <li><a class="btn primary" href="contact.html" ${active==="contact"?"aria-current='page'":""}>Contact</a></li>
+      <li><a href="index.html" ${active === "home" ? "aria-current='page'" : ""}>${t.home}</a></li>
+      <li><a href="services.html" ${active === "services" ? "aria-current='page'" : ""}>${t.services}</a></li>
+      <li><a href="blog.html" ${active === "blog" ? "aria-current='page'" : ""}>${t.blog}</a></li>
+      <li><a class="btn primary" href="contact.html" ${active === "contact" ? "aria-current='page'" : ""}>${t.contact}</a></li>
     </ul>
+    
+    <button class="lang-toggle" aria-label="Switch Language">
+      ${lang === 'de' ? 'EN' : 'DE'}
+    </button>
+
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <div class="mobile-menu" hidden>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html" class="btn primary">Contact</a>
+      <a href="index.html">${t.home}</a>
+      <a href="services.html">${t.services}</a>
+      <a href="blog.html">${t.blog}</a>
+      <a href="contact.html" class="btn primary">${t.contact}</a>
     </div>
   </nav>
 </header>
@@ -60,9 +98,9 @@ export function mountFrame(content, active = "home"){
 
 <footer class="footer">
   <div class="container row">
-    <small>© ${new Date().getFullYear()} Yondev. All rights reserved.</small>
-    <small><a href="impressum.html">Impressum – Datenschutz</a></small>
-    <button class="btn theme-toggle" type="button">Dark Mode</button>
+    <small>${t.rights}</small>
+    <small><a href="impressum.html">${t.impressum}</a></small>
+    <button class="btn theme-toggle" type="button">${t.themeDark}</button>
   </div>
 </footer>
 <button class="back-to-top" aria-label="Back to top">↑</button>
@@ -72,22 +110,29 @@ export function mountFrame(content, active = "home"){
   const app = document.getElementById('app');
   app.innerHTML = content;
 
+  // Language Toggle Logic
+  document.querySelector('.lang-toggle')?.addEventListener('click', () => {
+    const newLang = lang === 'en' ? 'de' : 'en';
+    localStorage.setItem('yondev-lang', newLang);
+    location.reload(); // Reload to re-render everything
+  });
+
   // mobile dropdown logic (closed by default, hidden on desktop)
   const nav = document.querySelector('.nav');
   const toggle = nav?.querySelector('.menu-toggle');
   const menu = nav?.querySelector('.mobile-menu');
 
-  function closeMenu(){
+  function closeMenu() {
     if (!menu) return;
     menu.hidden = true;
     menu.classList.remove('open');
-    toggle?.setAttribute('aria-expanded','false');
+    toggle?.setAttribute('aria-expanded', 'false');
   }
-  function openMenu(){
+  function openMenu() {
     if (!menu) return;
     menu.hidden = false;
     menu.classList.add('open');
-    toggle?.setAttribute('aria-expanded','true');
+    toggle?.setAttribute('aria-expanded', 'true');
   }
 
   // ensure closed on mount
@@ -103,16 +148,43 @@ export function mountFrame(content, active = "home"){
 
   // close when leaving mobile breakpoint
   const mq = window.matchMedia('(max-width: 900px)');
-  function handleBreakpoint(e){ if(!e.matches) closeMenu(); }
+  function handleBreakpoint(e) { if (!e.matches) closeMenu(); }
   mq.addEventListener('change', handleBreakpoint);
   handleBreakpoint(mq);
 
   // theme toggle logic
   const themeBtn = document.querySelector('.theme-toggle');
-  const stored = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initial = stored || (prefersDark ? 'dark' : 'light');
-  setTheme(initial);
+
+  // Check system preference
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function getTheme() {
+    const stored = localStorage.getItem('theme');
+    if (stored) return stored;
+    return systemPrefersDark.matches ? 'dark' : 'light';
+  }
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    // Correctly set button text based on current theme state + localization
+    if (themeBtn) {
+      // logic: if current is dark, button says "Light Mode" (to switch to light)
+      // if current is light, button says "Dark Mode" (to switch to dark)
+      const label = theme === 'dark' ? t.themeLight : t.themeDark;
+      themeBtn.textContent = label;
+    }
+  }
+
+  // Initialize
+  setTheme(getTheme());
+
+  // Listen for system changes (only applies if no user override is set)
+  systemPrefersDark.addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      const newTheme = e.matches ? 'dark' : 'light';
+      setTheme(newTheme);
+    }
+  });
 
   themeBtn?.addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-theme');
@@ -121,28 +193,23 @@ export function mountFrame(content, active = "home"){
     localStorage.setItem('theme', next);
   });
 
-  function setTheme(theme){
-    document.documentElement.setAttribute('data-theme', theme);
-    if(themeBtn) themeBtn.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
-  }
-
   // back to top button
   const backBtn = document.querySelector('.back-to-top');
   window.addEventListener('scroll', () => {
-    if(window.scrollY > 300) backBtn?.classList.add('show');
+    if (window.scrollY > 300) backBtn?.classList.add('show');
     else backBtn?.classList.remove('show');
   });
   backBtn?.addEventListener('click', () => {
-    window.scrollTo({ top:0, behavior:'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
   // cookie consent banner
-  initCookieConsent();
+  // initCookieConsent();
 }
 
-function initCookieConsent(){
+function initCookieConsent() {
   const stored = localStorage.getItem('cookie-consent');
-  if(stored) return;
+  if (stored) return;
 
   const lang = document.documentElement.lang || 'en';
   const policyLabel = lang.startsWith('de') ? 'Datenschutzerklärung' : 'Privacy Policy';
@@ -190,7 +257,7 @@ function initCookieConsent(){
   `;
   document.body.appendChild(modal);
 
-  function setConsent(value){
+  function setConsent(value) {
     localStorage.setItem('cookie-consent', value);
     banner.remove();
     modal.remove();
@@ -198,20 +265,20 @@ function initCookieConsent(){
 
   banner.addEventListener('click', e => {
     const action = e.target.getAttribute('data-action');
-    if(!action) return;
-    if(action === 'settings'){
+    if (!action) return;
+    if (action === 'settings') {
       banner.style.display = 'none';
       modal.classList.remove('hidden');
     }
-    if(action === 'accept') setConsent('accepted');
-    if(action === 'reject') setConsent('rejected');
+    if (action === 'accept') setConsent('accepted');
+    if (action === 'reject') setConsent('rejected');
   });
 
   modal.addEventListener('click', e => {
     const action = e.target.getAttribute('data-action');
-    if(action === 'accept') setConsent('accepted');
-    if(action === 'reject') setConsent('rejected');
-    if(e.target.classList.contains('cookie-close')){
+    if (action === 'accept') setConsent('accepted');
+    if (action === 'reject') setConsent('rejected');
+    if (e.target.classList.contains('cookie-close')) {
       modal.classList.add('hidden');
       banner.style.display = '';
     }
