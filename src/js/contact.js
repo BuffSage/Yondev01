@@ -1,6 +1,10 @@
 import { mountFrame } from './common.js';
 
-const FORM_ENDPOINT = "https://formspree.io/f/manbkaka"; // <-- replace this
+// Web3Forms Endpoint
+const FORM_ENDPOINT = "https://api.web3forms.com/submit";
+
+// Clean Mail Icon (matching services page)
+const mailIcon = `<svg class="service-icon-svg" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4M20 18H4V8L12 13L20 8V18M12 11L4 6H20L12 11Z" /></svg>`;
 
 const texts = {
   en: {
@@ -46,7 +50,10 @@ const getContent = (lang) => {
         
         <div style="display:flex; flex-direction:column; gap:24px; margin-bottom: 40px;">
           <div style="display:flex; gap:16px; align-items:center;">
-             <div style="width:48px; height:48px; background:var(--surface); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px;">📧</div>
+             <!-- Icon Container -->
+             <div style="width:48px; height:48px; background:var(--surface); border-radius:12px; display:flex; align-items:center; justify-content:center; color:var(--text);">
+               ${mailIcon}
+             </div>
              <div>
                <small style="text-transform:uppercase; letter-spacing:1px; font-weight:700; color:var(--muted); font-size:12px;">Email</small>
                <div style="font-weight:600; font-size:18px;">info@yondev.com</div>
@@ -59,9 +66,11 @@ const getContent = (lang) => {
       <!-- Right Form Side -->
       <div class="card" style="padding: 40px; border-radius: 24px; box-shadow: 0 12px 32px rgba(0,0,0,0.06);">
         <form id="contactForm" novalidate>
+          <!-- Web3Forms Access Key: 7d1c31f5-0d10-4684-879e-bdd153415ceb -->
+          <input type="hidden" name="access_key" value="7d1c31f5-0d10-4684-879e-bdd153415ceb">
+          
           <!-- Honeypot -->
-          <input type="text" name="website" tabindex="-1" autocomplete="off"
-                 style="position:absolute;left:-9999px;height:0;width:0;border:0;padding:0;margin:0">
+          <input type="checkbox" name="botcheck" tabindex="-1" style="display:none;">
 
           <div style="display:grid;gap:20px">
             <label style="font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:0.5px;">
@@ -96,7 +105,7 @@ const getContent = (lang) => {
 
 mountFrame(getContent, "contact");
 
-// Client-side submission to Formspree
+// Client-side submission to Web3Forms
 const form = document.getElementById("contactForm");
 const statusEl = document.getElementById("formStatus");
 
@@ -105,16 +114,6 @@ if (form) {
     e.preventDefault();
 
     const fd = new FormData(form);
-
-    // Honeypot: if filled, likely a bot -> pretend success and stop
-    if (fd.get("website")) {
-      if (statusEl) statusEl.textContent = "Thanks! We'll be in touch.";
-      form.reset();
-      return;
-    }
-
-    // Optional: add a subject line
-    fd.append("_subject", "New message from Yondev site");
 
     if (statusEl) statusEl.textContent = "Sending...";
 
@@ -135,8 +134,8 @@ if (form) {
         let msg = "Something went wrong. Please try again.";
         try {
           const data = await res.json();
-          if (data && data.errors && data.errors[0] && data.errors[0].message) {
-            msg = data.errors[0].message;
+          if (data && data.message) {
+            msg = data.message;
           }
         } catch (_) { }
         if (statusEl) statusEl.textContent = msg;
