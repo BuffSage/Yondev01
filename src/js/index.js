@@ -22,12 +22,12 @@ const texts = {
     projects: {
       title: "Past Projects",
       ndn: {
-        desc: "Full business website and logo design for an asbestos and pollutant remediation company.",
-        extra: "Responsive showcase highlighting services, project imagery, and fast quote requests."
+        desc: "Business website for an asbestos & pollutant remediation company.",
+        tags: ["Web Design", "Email System", "Google Business"]
       },
-      flop: {
-        desc: "Custom digital solution tailored to specific business needs.",
-        extra: "Streamlined interface and optimized performance for better user engagement."
+      tanoffice: {
+        desc: "Business Website and Logo for tanning salon management software.",
+        tags: ["Web Design", "Logo Design", "Contact Form"]
       }
     },
     cta: {
@@ -54,12 +54,12 @@ const texts = {
     projects: {
       title: "Vergangene Projekte",
       ndn: {
-        desc: "Komplette Firmenwebsite und Logo-Design für ein Unternehmen zur Asbest- und Schadstoffsanierung.",
-        extra: "Responsives Showcase mit Dienstleistungen, Projektbildern und schneller Angebotsanfrage."
-      },
-      flop: {
-        desc: "Maßgeschneiderte digitale Lösung für spezifische Geschäftsanforderungen.",
-        extra: "Optimierte Benutzeroberfläche und Performance für bessere Nutzerbindung."
+        desc: "Firmenwebsite für ein Unternehmen zur Asbest- und Schadstoffsanierung.",
+        tags: ["Web Design", "Email System", "Google Business"]
+      },  
+      tanoffice: {
+        desc: "Firmenwebsite und Logo für Sonnenstudio-Management-Software.",
+        tags: ["Web Design", "Logo-Design", "Kontaktformular"]
       }
     },
     cta: {
@@ -113,19 +113,21 @@ const getContent = (lang) => {
   <div class="container">
     <h2>${t.projects.title}</h2>
     <div class="grid grid-2">
-      <article class="card" tabindex="0">
-        <a href="https://ndnsanierung.de" target="_blank" rel="noopener">
-          <img src="src/assets/images/ndnsanierung-logo.png" alt="NDNSanierung.de preview">
+      <article class="card project-card">
+        <a href="https://ndnsanierung.de" target="_blank" rel="noopener" class="project-logo-wrap">
+          <img src="src/assets/images/ndnsanierung-logo.png" alt="NDNSanierung.de logo" class="project-logo">
         </a>
-        <h3><a href="https://ndnsanierung.de" target="_blank" rel="noopener">NDNSanierung.de</a></h3>
+        <h3><a href="https://ndn-sanierung.de" target="_blank" rel="noopener">NDN-Sanierung.de</a></h3>
         <p>${t.projects.ndn.desc}</p>
-        <p class="extra">${t.projects.ndn.extra}</p>
+        <div class="project-tags">${t.projects.ndn.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}</div>
       </article>
-      <article class="card" tabindex="0">
-        <!-- No photo for this tile as requested -->
-        <h3><a href="#" rel="noopener">Flopriverquest</a></h3>
-        <p>${t.projects.flop.desc}</p>
-        <p class="extra">${t.projects.flop.extra}</p>
+      <article class="card project-card">
+        <a href="https://tanoffice.de" target="_blank" rel="noopener" class="project-logo-wrap">
+          <img src="src/assets/images/TanOfficeYondev.png" alt="TanOffice logo" class="project-logo">
+        </a>
+        <h3><a href="https://tanoffice.de" target="_blank" rel="noopener">TanOffice.de</a></h3>
+        <p>${t.projects.tanoffice.desc}</p>
+        <div class="project-tags">${t.projects.tanoffice.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}</div>
       </article>
     </div>
   </div>
@@ -163,7 +165,3 @@ const getContent = (lang) => {
 };
 
 mountFrame(getContent, 'home');
-
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('click', () => card.classList.toggle('expanded'));
-});

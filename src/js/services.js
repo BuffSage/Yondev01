@@ -2,7 +2,6 @@
 import { mountFrame } from './common.js';
 
 // SVG Icons (Cleaned up for crispness)
-// SVG Icons (Cleaned up for crispness)
 const icons = {
   // New Clean "Web Layout" icon for Landing Pages
   landing: `<svg class="service-icon-svg" viewBox="0 0 24 24"><path d="M21,16V4H3V16H21M21,2A2,2 0 0,1 23,4V16A2,2 0 0,1 21,18H14V20H16V22H8V20H10V18H3C1.89,18 1,17.1 1,16V4C1,2.89 1.89,2 3,2H21M5,6H19V8H5V6M5,9H19V11H5V9M5,12H12V14H5V12Z" /></svg>`,
