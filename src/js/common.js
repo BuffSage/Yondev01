@@ -37,6 +37,9 @@ export function getLang() {
 export function mountFrame(contentRaw, active = "home") {
   const lang = getLang();
 
+  // Sync the html[lang] attribute so screen readers and spellcheck are correct
+  document.documentElement.lang = lang;
+
   // If contentRaw is a function, it implies it needs the language to render
   const content = typeof contentRaw === 'function' ? contentRaw(lang) : contentRaw;
 

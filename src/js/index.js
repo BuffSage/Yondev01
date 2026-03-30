@@ -43,7 +43,7 @@ const texts = {
   de: {
     hero: {
       title: "Gewinnen Sie Zeit zurück",
-      sub: "Effiziente Websites und einfache Tools, die unnötige Arbeit reduzieren – damit Sie sich auf das Wesentliche konzentrieren können.",
+      sub: "Effiziente Websites und einfache Tools, die unnötige Arbeit reduzieren, damit Sie sich auf das Wesentliche konzentrieren können.",
       cta1: "Leistungen ansehen",
       cta2: "Kontaktieren Sie uns"
     },

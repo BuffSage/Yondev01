@@ -740,10 +740,26 @@ h1 {
 }
 
 .page-header {
-  padding: 60px 0 20px;
+  padding: 60px 0 52px;
   text-align: center;
-  background: var(--surface);
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
   transition: background .3s ease, color .3s ease;
+}
+
+@media (max-width: 900px) {
+  .page-header {
+    padding: 40px 0 36px;
+  }
+
+  .page-title {
+    font-size: clamp(32px, 10vw, 54px);
+  }
+
+  .page-header p {
+    font-size: 1rem !important;
+    padding: 0 8px;
+  }
 }
 
 .page-title {
@@ -769,7 +785,7 @@ h1 {
   }
 
   to {
-    width: 100px
+    width: 100%
   }
 }
 
@@ -807,7 +823,7 @@ h1 {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 32px;
 }
 
@@ -818,11 +834,15 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
+  gap: 0;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
   position: relative;
   border: 1px solid transparent;
+}
+
+.service-card .service-icon-wrapper {
+  margin-bottom: 20px;
 }
 
 /* Gray Section (Odd) -> White Cards */
@@ -856,17 +876,16 @@ h1 {
   align-items: center;
   justify-content: center;
   font-size: 26px;
-  margin-bottom: 8px;
   transition: transform 0.3s ease;
   box-shadow: 0 8px 16px rgba(255, 207, 64, 0.25);
 }
 
 .service-card:hover .service-icon-wrapper {
-  transform: scale(1.1) rotate(6deg);
+  transform: scale(1.08);
 }
 
 .service-card h3 {
-  margin: 0;
+  margin: 0 0 8px;
   font-size: 1.4rem;
   color: var(--text);
   font-weight: 700;
@@ -888,6 +907,60 @@ h1 {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .services-section {
+    padding: 48px 0;
+  }
+
+  .services-header {
+    margin-bottom: 32px;
+  }
+
+  .service-card {
+    padding: 24px;
+    gap: 16px;
+    border-radius: 18px;
+  }
+
+  .services-grid {
+    gap: 16px;
+  }
+}
+
+/* Services bottom CTA */
+.services-cta {
+  padding: 80px 0;
+  background: var(--accent);
+  text-align: center;
+}
+
+.services-cta h2 {
+  color: #111;
+  margin: 0 0 12px;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  border: none;
+}
+
+.services-cta p {
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 1.05rem;
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+
+.services-cta-btn {
+  background: #111 !important;
+  color: #fff !important;
+  border-color: transparent !important;
+  padding: 14px 36px;
+}
+
+@media (max-width: 900px) {
+  .services-cta {
+    padding: 56px 0;
   }
 }
 
