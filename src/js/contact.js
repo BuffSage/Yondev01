@@ -4,7 +4,9 @@ import { mountFrame } from './common.js';
 const FORM_ENDPOINT = "https://api.web3forms.com/submit";
 
 // Clean Mail Icon (matching services page)
-const mailIcon = `<svg class="service-icon-svg" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4M20 18H4V8L12 13L20 8V18M12 11L4 6H20L12 11Z" /></svg>`;
+const mailIcon = `<svg class="contact-icon-svg" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4M20 18H4V8L12 13L20 8V18M12 11L4 6H20L12 11Z" /></svg>`;
+
+const whatsappIcon = `<svg class="contact-icon-svg" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.37 17.04 14.27C16.97 14.17 16.81 14.1 16.56 13.98C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.31C14.22 13.43 13.92 13.79 13.73 14.01C13.58 14.18 13.43 14.21 13.21 14.1C12.96 13.98 12.18 13.72 11.25 12.89C10.54 12.24 10.07 11.46 9.93 11.21C9.82 11 9.93 10.87 10.04 10.76C10.15 10.65 10.28 10.47 10.41 10.32C10.54 10.17 10.59 10.06 10.68 9.88C10.77 9.7 10.73 9.54 10.66 9.42C10.59 9.3 10.12 8.07 9.91 7.58C9.71 7.09 9.5 7.16 9.34 7.15L8.53 7.33Z" /></svg>`;
 
 const texts = {
   en: {
@@ -28,7 +30,7 @@ const texts = {
 const getContent = (lang) => {
   const t = texts[lang];
   return `
-<section class="section" style="padding-top:40px;">
+<section class="section contact-section" style="padding-top:40px;">
   <div class="container">
     <div style="
         display: grid;
@@ -49,22 +51,29 @@ const getContent = (lang) => {
         </p>
         
         <div style="display:flex; flex-direction:column; gap:24px; margin-bottom: 40px;">
-          <div style="display:flex; gap:16px; align-items:center;">
-             <!-- Icon Container -->
-             <div style="width:48px; height:48px; background:var(--surface); border-radius:12px; display:flex; align-items:center; justify-content:center; color:var(--text);">
+          <div class="contact-info-row">
+             <div class="contact-icon-box">
                ${mailIcon}
              </div>
              <div>
-               <small style="text-transform:uppercase; letter-spacing:1px; font-weight:700; color:var(--muted); font-size:12px;">Email</small>
-               <div style="font-weight:600; font-size:18px;">info@yondev.com</div>
+               <span class="contact-info-label">Email</span>
+               <div class="contact-info-value">info@yondev.com</div>
              </div>
           </div>
-          <!-- Add more info/phone if needed -->
+          <div class="contact-info-row">
+             <div class="contact-icon-box">
+               ${whatsappIcon}
+             </div>
+             <div>
+               <span class="contact-info-label">WhatsApp</span>
+               <a href="https://wa.me/4915567300852" target="_blank" rel="noopener" class="contact-info-value">+49 155 6730 0852</a>
+             </div>
+          </div>
         </div>
       </div>
 
       <!-- Right Form Side -->
-      <div class="card" style="padding: 40px; border-radius: 24px; box-shadow: 0 12px 32px rgba(0,0,0,0.06);">
+      <div class="card contact-form-card" style="padding: 40px; border-radius: 24px; box-shadow: 0 12px 32px rgba(0,0,0,0.06);">
         <form id="contactForm" novalidate>
           <!-- Web3Forms Access Key: 7d1c31f5-0d10-4684-879e-bdd153415ceb -->
           <input type="hidden" name="access_key" value="7d1c31f5-0d10-4684-879e-bdd153415ceb">

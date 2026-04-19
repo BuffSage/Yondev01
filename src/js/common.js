@@ -31,7 +31,7 @@ window.requestAnimationFrame(() => {
 
 // Simple translation state
 export function getLang() {
-  return localStorage.getItem('yondev-lang') || 'en';
+  return localStorage.getItem('yondev-lang') || 'de';
 }
 
 export function mountFrame(contentRaw, active = "home") {
@@ -51,7 +51,7 @@ export function mountFrame(contentRaw, active = "home") {
       blog: "Blog",
       contact: "Contact",
       rights: `© ${new Date().getFullYear()} Yondev. All rights reserved.`,
-      impressum: "Impressum – Datenschutz",
+      impressum: "Legal",
       themeDark: "Dark Mode",
       themeLight: "Light Mode"
     },
@@ -61,7 +61,7 @@ export function mountFrame(contentRaw, active = "home") {
       blog: "Blog",
       contact: "Kontakt",
       rights: `© ${new Date().getFullYear()} Yondev. Alle Rechte vorbehalten.`,
-      impressum: "Impressum – Datenschutz",
+      impressum: "Rechtliches",
       themeDark: "Dunkelmodus",
       themeLight: "Lichtmodus"
     }
@@ -102,7 +102,7 @@ export function mountFrame(contentRaw, active = "home") {
 <footer class="footer">
   <div class="container row">
     <small>${t.rights}</small>
-    <small><a href="impressum.html">${t.impressum}</a></small>
+    <small><a href="rechtliches.html">${t.impressum}</a></small>
     <button class="btn theme-toggle" type="button">${t.themeDark}</button>
   </div>
 </footer>
@@ -254,7 +254,7 @@ function initCookieConsent() {
           <button class="btn" data-action="reject" type="button">Reject All</button>
         </div>
       </form>
-      <p style="margin-top:10px;"><a href="impressum.html" target="_blank" rel="noopener">${policyLabel}</a></p>
+      <p style="margin-top:10px;"><a href="rechtliches.html" target="_blank" rel="noopener">${policyLabel}</a></p>
       <button class="cookie-close" aria-label="Close">×</button>
     </div>
   `;

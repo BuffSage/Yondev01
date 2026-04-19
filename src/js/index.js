@@ -45,7 +45,7 @@ const texts = {
       title: "Gewinnen Sie Zeit zurück",
       sub: "Effiziente Websites und einfache Tools, die unnötige Arbeit reduzieren, damit Sie sich auf das Wesentliche konzentrieren können.",
       cta1: "Leistungen ansehen",
-      cta2: "Kontaktieren Sie uns"
+      cta2: "Kostenlose Beratung"
     },
     workflow: {
       title: "Ein besserer Workflow",
@@ -81,12 +81,7 @@ const getContent = (lang) => {
 <section class="hero hero-filled" id="home" style="background-image:url('src/assets/images/ProustFP.jpg')">
   <div class="hero-center">
     <h1>${t.hero.title}</h1>
-    <p class="sub" style="
-          margin:0;
-          font-weight:400;
-          font-size:clamp(15px, 3.2vw, 30px);
-          line-height:1.25;
-        ">${t.hero.sub}</p>
+    <p class="sub hero-sub">${t.hero.sub}</p>
     <div class="cta">
   <a class="btn primary" href="services.html">${t.hero.cta1}</a>
   <a class="btn secondary" href="contact.html">${t.hero.cta2}</a>
@@ -139,13 +134,7 @@ const getContent = (lang) => {
     <h2 style="margin-bottom:60px;">${t.cta.title}</h2>
     
     <!-- 3-Step Flow -->
-    <div style="
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-bottom: 60px;
-      text-align: left;
-    ">
+    <div class="steps-grid">
       ${t.cta.steps.map(step => `
         <div style="position:relative; padding-left: 20px;">
            <!-- Vertical line visual -->
@@ -158,7 +147,7 @@ const getContent = (lang) => {
     </div>
 
     <!-- Final Action -->
-    <a class="btn primary" href="contact.html" style="font-size: 1.2rem; padding: 18px 48px;">${t.cta.btn}</a>
+    <a class="btn primary cta-main-btn" href="contact.html">${t.cta.btn}</a>
   </div>
 </section>
 `;

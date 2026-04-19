@@ -518,6 +518,15 @@ h1 {
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18), 0 1px 0 #000;
 }
 
+/* Hero subtitle — sized and spaced consistently across all languages */
+.hero-sub {
+  margin: 12px 0 0;
+  font-weight: 400;
+  font-size: clamp(15px, 3.2vw, 28px);
+  line-height: 1.5;
+  max-width: 680px;
+}
+
 .hero.hero-filled .hero-center {
   position: relative;
   z-index: 1;
@@ -540,7 +549,9 @@ h1 {
 }
 
 .hero-center .cta {
-  justify-content: center
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-top: 28px;
 }
 
 .cta {
@@ -734,9 +745,9 @@ h1 {
 
 /* Service Icons (SVG) */
 .service-icon-svg {
-  width: 28px;
-  height: 28px;
-  fill: currentColor;
+  width: 30px;
+  height: 30px;
+  fill: #111;
 }
 
 .page-header {
@@ -833,7 +844,8 @@ h1 {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
   gap: 0;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
@@ -867,21 +879,21 @@ h1 {
 }
 
 .service-icon-wrapper {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   background: var(--accent);
+  border: none;
   color: #111;
-  border-radius: 16px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
+  flex-shrink: 0;
   transition: transform 0.3s ease;
-  box-shadow: 0 8px 16px rgba(255, 207, 64, 0.25);
 }
 
 .service-card:hover .service-icon-wrapper {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
 .service-card h3 {
@@ -927,6 +939,15 @@ h1 {
 
   .services-grid {
     gap: 16px;
+  }
+
+  .service-icon-wrapper {
+    width: 52px;
+    height: 52px;
+  }
+
+  .service-card .service-icon-wrapper {
+    margin-bottom: 14px;
   }
 }
 
@@ -1248,7 +1269,6 @@ h1 {
 @media (max-width: 480px) {
   .brand {
     font-size: 1.1rem;
-    /* Shrink brand text */
   }
 
   .brand-logo {
@@ -1259,7 +1279,6 @@ h1 {
 
   .lang-toggle {
     margin-right: 4px;
-    /* Tighter spacing */
     font-size: 11px;
     padding: 4px 8px;
   }
@@ -1269,9 +1288,234 @@ h1 {
     height: 36px;
   }
 
-  /* Ensure spacing */
   .nav {
     padding-left: 12px;
     padding-right: 12px;
+  }
+
+  /* Hero CTA: keep buttons on one line, reduce padding so German fits */
+  .hero-center .cta .btn {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  /* Homepage final CTA button: comfortable width, not full-stretch */
+  .cta-main-btn {
+    font-size: 1.05rem;
+    padding: 16px 32px;
+  }
+
+  /* Services CTA button: comfortable max width */
+  .services-cta-btn {
+    padding: 14px 32px;
+  }
+}
+
+/* ============================
+   CONTACT INFO ROWS
+   ============================ */
+
+.contact-icon-svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.contact-info-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.contact-icon-box {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+}
+
+.contact-info-label {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.contact-info-value {
+  display: block;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--text);
+}
+
+/* ============================
+   HOMEPAGE — CTA STEPS GRID
+   ============================ */
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+  text-align: left;
+}
+
+/* ============================
+   HOMEPAGE — LARGE CTA BUTTON
+   ============================ */
+
+.cta-main-btn {
+  font-size: 1.2rem;
+  padding: 18px 48px;
+}
+
+/* ============================
+   MOBILE — ≤ 900px additions
+   ============================ */
+
+@media (max-width: 900px) {
+  /* Tighter section vertical rhythm */
+  .section {
+    padding: 48px 0 60px;
+  }
+
+  /* CTA steps: reduced gap when stacked */
+  .steps-grid {
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  /* Contact form: reduce padding on mobile */
+  .contact-form-card {
+    padding: 24px !important;
+    border-radius: 18px !important;
+  }
+
+  /* Contact section bottom padding */
+  .contact-section.section {
+    padding-bottom: 48px;
+  }
+}
+
+/* ============================
+   LEGAL TABS (Impressum page)
+   ============================ */
+
+.legal-section.section {
+  padding-top: 48px;
+  padding-bottom: 80px;
+}
+
+.legal-card-wrapper {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.legal-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 0;
+  gap: 0;
+  background: var(--surface);
+}
+
+.legal-tab {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  font-family: inherit;
+}
+
+.legal-tab:hover {
+  color: var(--text);
+}
+
+.legal-tab.active {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+.legal-panel {
+  padding: 40px;
+}
+
+.legal-heading {
+  margin-top: 0;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 3px solid var(--accent);
+  display: inline-block;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.legal-panel h3 {
+  margin-top: 28px;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.legal-panel p,
+.legal-panel li {
+  line-height: 1.75;
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+
+.legal-panel ul {
+  padding-left: 20px;
+  margin: 8px 0 16px;
+}
+
+.legal-panel a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.legal-panel code {
+  font-size: 0.9em;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.legal-footer-note {
+  color: var(--muted);
+  font-size: 0.88rem !important;
+  margin-top: 36px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 600px) {
+  .legal-tab {
+    padding: 12px 16px;
+    font-size: 0.88rem;
+  }
+
+  .legal-panel {
+    padding: 24px 20px;
   }
 }

@@ -3,10 +3,11 @@ import { mountFrame } from './common.js';
 
 // SVG Icons (Cleaned up for crispness)
 const icons = {
-  // New Clean "Web Layout" icon for Landing Pages
-  landing: `<svg class="service-icon-svg" viewBox="0 0 24 24"><path d="M21,16V4H3V16H21M21,2A2,2 0 0,1 23,4V16A2,2 0 0,1 21,18H14V20H16V22H8V20H10V18H3C1.89,18 1,17.1 1,16V4C1,2.89 1.89,2 3,2H21M5,6H19V8H5V6M5,9H19V11H5V9M5,12H12V14H5V12Z" /></svg>`,
+  // Mobile phone icon for Landing Pages
+  landing: `<svg class="service-icon-svg" viewBox="0 0 24 24"><path d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3C19,1.89 18.1,1 17,1Z" /></svg>`,
 
-  laptop: `<svg class="service-icon-svg" viewBox="0 0 24 24"><path d="M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H0V20H24V18H20Z" /></svg>`,
+  // Web layout icon for Dynamic Websites
+  laptop: `<svg class="service-icon-svg" viewBox="0 0 24 24"><path d="M21,16V4H3V16H21M21,2A2,2 0 0,1 23,4V16A2,2 0 0,1 21,18H14V20H16V22H8V20H10V18H3C1.89,18 1,17.1 1,16V4C1,2.89 1.89,2 3,2H21M5,6H19V8H5V6M5,9H19V11H5V9M5,12H12V14H5V12Z" /></svg>`,
   form: `<svg class="service-icon-svg" viewBox="0 0 24 24"><path d="M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M7,7H17V9H7V7M7,11H17V13H7V11M7,15H13V17H7V15Z" /></svg>`,
   analytics: `<svg class="service-icon-svg" viewBox="0 0 24 24"><path d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z" /></svg>`,
 
@@ -21,7 +22,7 @@ const icons = {
   search: `<svg class="service-icon-svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>`,
 
   // Clean Mail
-  mail: `<svg class="service-icon-svg" viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4M20 18H4V8L12 13L20 8V18M12 11L4 6H20L12 11Z" /></svg>`,
+  mail: `<svg class="service-icon-svg" viewBox="0 0 24 24"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z" /></svg>`,
   // Content Creation
   camera: `<svg class="service-icon-svg" viewBox="0 0 24 24"><path d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z" /></svg>`
 };
@@ -48,12 +49,12 @@ const texts = {
     cta: {
       heading: "Ready to get started?",
       sub: "Tell us what you need. We'll get back to you within 24 hours.",
-      btn: "Get in Touch"
+      btn: "Free Consultation"
     }
   },
   de: {
     title: "Leistungen",
-    subtitle: "Saubere Websites und gezieltes Marketing für Unternehmen, die echte Ergebnisse wollen.",
+    subtitle: "Saubere Websites und gezieltes Marketing für kleine Unternehmen, die echte Ergebnisse wollen.",
     sections: {
       business: "Business Websites",
       social: "Social Media Präsenz",
@@ -72,7 +73,7 @@ const texts = {
     cta: {
       heading: "Bereit loszulegen?",
       sub: "Sagen Sie uns, was Sie brauchen. Wir melden uns innerhalb von 24 Stunden.",
-      btn: "Kontakt aufnehmen"
+      btn: "Kostenlose Erstberatung"
     }
   }
 };
