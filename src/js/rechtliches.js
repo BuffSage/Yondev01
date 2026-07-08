@@ -20,7 +20,7 @@ const getContent = () => `
         <h3>Angaben gemäß § 5 TMG</h3>
         <p>
           <strong>Lukas Henderson-Konduschek</strong><br>
-          YonDev (Einzelunternehmen)<br>
+          Yondev (Einzelunternehmen)<br>
           Deutschland
         </p>
         <p>
@@ -116,9 +116,9 @@ const getContent = () => `
 
 mountFrame(getContent, "impressum");
 
-// Tab switching
+// Tab switching and contact obfuscation
 requestAnimationFrame(() => {
-  // Obfuscate contact details at runtime so they don't appear in source
+  // Obfuscate contact details to prevent scraping
   document.querySelectorAll('.obf-phone').forEach(el => {
     el.textContent = ['+49', '155', '6730', '0852'].join('\u00a0');
   });

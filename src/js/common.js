@@ -37,13 +37,13 @@ export function getLang() {
 export function mountFrame(contentRaw, active = "home") {
   const lang = getLang();
 
-  // Sync the html[lang] attribute so screen readers and spellcheck are correct
+  // Sync document language for accessibility
   document.documentElement.lang = lang;
 
-  // If contentRaw is a function, it implies it needs the language to render
+  // Execute content template if it's a function
   const content = typeof contentRaw === 'function' ? contentRaw(lang) : contentRaw;
 
-  // Translations for Nav and Footer
+  // Navigation and footer localizations
   const t = {
     en: {
       home: "Home",
@@ -158,7 +158,7 @@ export function mountFrame(contentRaw, active = "home") {
   // theme toggle logic
   const themeBtn = document.querySelector('.theme-toggle');
 
-  // Check system preference
+  // Default to system preference
   const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
   function getTheme() {
@@ -169,19 +169,17 @@ export function mountFrame(contentRaw, active = "home") {
 
   function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    // Correctly set button text based on current theme state + localization
+    // Set button label based on target theme name
     if (themeBtn) {
-      // logic: if current is dark, button says "Light Mode" (to switch to light)
-      // if current is light, button says "Dark Mode" (to switch to dark)
       const label = theme === 'dark' ? t.themeLight : t.themeDark;
       themeBtn.textContent = label;
     }
   }
 
-  // Initialize
+  // Initialize theme
   setTheme(getTheme());
 
-  // Listen for system changes (only applies if no user override is set)
+  // Sync theme with system preference changes if no user override is saved
   systemPrefersDark.addEventListener('change', (e) => {
     if (!localStorage.getItem('theme')) {
       const newTheme = e.matches ? 'dark' : 'light';

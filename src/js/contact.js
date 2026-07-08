@@ -114,7 +114,7 @@ const getContent = (lang) => {
 
 mountFrame(getContent, "contact");
 
-// Client-side submission to Web3Forms
+// Submit contact form via API
 const form = document.getElementById("contactForm");
 const statusEl = document.getElementById("formStatus");
 

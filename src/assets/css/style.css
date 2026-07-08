@@ -1519,3 +1519,130 @@ h1 {
     padding: 24px 20px;
   }
 }
+
+/* --- Projects Slider Styles --- */
+#projects h2 {
+  border-bottom: 3px solid var(--accent) !important;
+  display: inline-block;
+  padding-bottom: 12px;
+  margin: 0 auto 36px auto;
+}
+
+.projects-carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.slider-control-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.25s ease;
+  padding: 0;
+  box-shadow: var(--shadow);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.slider-control-btn.prev-btn {
+  left: -85px; /* Increased from -70px */
+}
+
+.slider-control-btn.next-btn {
+  right: -85px; /* Increased from -70px */
+}
+
+.slider-control-btn svg {
+  fill: currentColor;
+  transition: transform 0.2s ease;
+  width: 22px;
+  height: 22px;
+}
+
+.slider-control-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #111;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-control-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.projects-slider {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  padding: 8px 0 24px; /* avoid cutting off shadows */
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.projects-slider::-webkit-scrollbar {
+  display: none; /* Safari & Chrome */
+}
+
+.projects-slider .project-card {
+  flex: 0 0 calc((100% - 24px) / 2); /* Show 2 cards on desktop */
+  scroll-snap-align: start;
+}
+
+@media (max-width: 1280px) {
+  .projects-carousel-wrapper {
+    padding: 0 80px; /* Increased from 60px to gap arrows more */
+  }
+
+  .slider-control-btn.prev-btn {
+    left: 14px;
+  }
+
+  .slider-control-btn.next-btn {
+    right: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .projects-carousel-wrapper {
+    padding: 0 55px; /* Squeeze container slightly to fit arrows on mobile */
+  }
+
+  .slider-control-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .slider-control-btn.prev-btn {
+    left: 8px;
+  }
+
+  .slider-control-btn.next-btn {
+    right: 8px;
+  }
+
+  .slider-control-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .projects-slider {
+    gap: 16px;
+    padding-bottom: 16px;
+  }
+
+  .projects-slider .project-card {
+    flex: 0 0 88%; /* Mobile peek effect */
+  }
+}
