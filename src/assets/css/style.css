@@ -388,7 +388,8 @@ img {
 /* Filled hero header */
 .hero.hero-filled {
   position: relative;
-  min-height: calc(90vh - 108px);
+  min-height: calc(100vh - 64px);
+  min-height: calc(100dvh - 64px);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -410,18 +411,23 @@ img {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, .45) 0%, rgba(0, 0, 0, .18) 60%, rgba(0, 0, 0, .7) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.4) 100%);
   z-index: 0;
   pointer-events: none;
 }
 
+[data-theme="dark"] .hero.hero-filled::before {
+  background: linear-gradient(180deg, rgba(13, 17, 23, 0.8) 0%, rgba(13, 17, 23, 0.4) 60%, rgba(13, 17, 23, 0.8) 100%);
+}
+
 @media (max-width:900px) {
   .hero.hero-filled::before {
-    background: linear-gradient(180deg, rgba(0, 0, 0, .32) 0%, rgba(0, 0, 0, .12) 60%, rgba(0, 0, 0, .5) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.4) 100%);
   }
 
   .hero.hero-filled {
-    min-height: calc(70vh - 64px);
+    min-height: calc(100vh - 56px);
+    min-height: calc(100dvh - 56px);
     padding-top: 32px;
     padding-bottom: 24px;
   }
@@ -512,20 +518,7 @@ h1 {
   margin: 0 0 20px
 }
 
-.hero.hero-filled .sub {
-  color: #fff;
-  opacity: 1;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18), 0 1px 0 #000;
-}
 
-/* Hero subtitle — sized and spaced consistently across all languages */
-.hero-sub {
-  margin: 12px 0 0;
-  font-weight: 400;
-  font-size: clamp(15px, 3.2vw, 28px);
-  line-height: 1.5;
-  max-width: 680px;
-}
 
 .hero.hero-filled .hero-center {
   position: relative;
@@ -534,10 +527,8 @@ h1 {
   color: #fff;
 }
 
-.hero.hero-filled .hero-center * {
+.hero.hero-filled .hero-center h1 {
   color: #fff;
-  opacity: 1;
-  pointer-events: auto;
 }
 
 .hero.hero-filled .btn,
@@ -1293,12 +1284,7 @@ h1 {
     padding-right: 12px;
   }
 
-  /* Hero CTA: keep buttons on one line, reduce padding so German fits */
-  .hero-center .cta .btn {
-    padding: 10px 14px;
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
+
 
   /* Homepage final CTA button: comfortable width, not full-stretch */
   .cta-main-btn {
@@ -1517,6 +1503,23 @@ h1 {
 
   .legal-panel {
     padding: 24px 20px;
+  }
+
+  /* Hero CTA: Stack buttons vertically for better mobile spacing and tap target sizing */
+  .hero-center .cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .hero-center .cta .btn {
+    width: 100%;
+    max-width: 290px;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 1rem;
+    white-space: normal;
   }
 }
 

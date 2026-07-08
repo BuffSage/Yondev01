@@ -11,7 +11,6 @@ const texts = {
   en: {
     hero: {
       title: "Reclaim Your Time",
-      sub: "Streamlined sites and simple tooling that reduce busywork so you can focus on what matters.",
       cta1: "Explore Services",
       cta2: "Get in Touch"
     },
@@ -51,7 +50,6 @@ const texts = {
   de: {
     hero: {
       title: "Gewinnen Sie Zeit zurück",
-      sub: "Effiziente Websites und einfache Tools, die unnötige Arbeit reduzieren, damit Sie sich auf das Wesentliche konzentrieren können.",
       cta1: "Leistungen ansehen",
       cta2: "Kostenlose Beratung"
     },
@@ -97,7 +95,6 @@ const getContent = (lang) => {
 <section class="hero hero-filled" id="home" style="background-image:url('src/assets/images/ProustFP.jpg')">
   <div class="hero-center">
     <h1>${t.hero.title}</h1>
-    <p class="sub hero-sub">${t.hero.sub}</p>
     <div class="cta">
   <a class="btn primary" href="services.html">${t.hero.cta1}</a>
   <a class="btn secondary" href="contact.html">${t.hero.cta2}</a>
