@@ -151,7 +151,7 @@ if (form) {
       }
     } catch (_) {
       if (statusEl) statusEl.textContent =
-        "Network error — please check your connection and try again.";
+        "Network error - please check your connection and try again.";
     }
   });
 }

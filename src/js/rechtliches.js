@@ -43,7 +43,7 @@ const texts = {
       s5Title: "5. WhatsApp-Kontakt",
       s5Text: "Wenn Sie uns über WhatsApp kontaktieren, verarbeitet WhatsApp Ireland Limited Ihre Nachricht gemäß deren eigenen Datenschutzrichtlinien. Weitere Informationen: <a href=\"https://www.whatsapp.com/legal/privacy-policy\" target=\"_blank\" rel=\"noopener\">whatsapp.com/legal/privacy-policy</a>.",
       s6Title: "6. Ihre Rechte",
-      s6Text: "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit (Art. 15–20 DSGVO) sowie das Widerspruchsrecht (Art. 21 DSGVO). Kontakt: <span class=\"obf-email\" aria-label=\"E-Mail-Adresse\"><!-- mail --></span>. Sie können sich zudem bei der zuständigen Datenschutzaufsichtsbehörde beschweren.",
+      s6Text: "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit (Art. 15-20 DSGVO) sowie das Widerspruchsrecht (Art. 21 DSGVO). Kontakt: <span class=\"obf-email\" aria-label=\"E-Mail-Adresse\"><!-- mail --></span>. Sie können sich zudem bei der zuständigen Datenschutzaufsichtsbehörde beschweren.",
       s7Title: "7. SSL-Verschlüsselung",
       s7Text: "Die Verbindung zu dieser Website ist SSL-verschlüsselt. Sie erkennen das an dem Schloss-Symbol und https:// in der Adressleiste.",
       stand: "Stand: April 2026"
@@ -111,7 +111,7 @@ const texts = {
       s5Title: "5. WhatsApp Inquiries",
       s5Text: "If you contact us via WhatsApp, WhatsApp Ireland Limited processes your message in accordance with their privacy policy. Further information: <a href=\"https://www.whatsapp.com/legal/privacy-policy\" target=\"_blank\" rel=\"noopener\">whatsapp.com/legal/privacy-policy</a>.",
       s6Title: "6. Your Rights",
-      s6Text: "You have the right to information, rectification, deletion, restriction of processing, and data portability (Art. 15–20 GDPR), as well as the right to object (Art. 21 GDPR). Contact: <span class=\"obf-email\" aria-label=\"E-Mail-Adresse\"><!-- mail --></span>. You may also lodge a complaint with the competent data protection authority.",
+      s6Text: "You have the right to information, rectification, deletion, restriction of processing, and data portability (Art. 15-20 GDPR), as well as the right to object (Art. 21 GDPR). Contact: <span class=\"obf-email\" aria-label=\"E-Mail-Adresse\"><!-- mail --></span>. You may also lodge a complaint with the competent data protection authority.",
       s7Title: "7. SSL Encryption",
       s7Text: "The connection to this website is SSL encrypted. You can recognize this by the padlock icon and https:// in the address bar.",
       stand: "As of: April 2026"

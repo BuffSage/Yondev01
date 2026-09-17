@@ -962,7 +962,7 @@ h1 {
   color: var(--muted)
 }
 
-/* Project logo: always-white backdrop — clean in both light & dark */
+/* Project logo: always-white backdrop - clean in both light & dark */
 .project-logo-wrap {
   display: block;
   background: #fff;
@@ -1616,7 +1616,7 @@ h1 {
 }
 
 /* ============================
-   HOMEPAGE — CTA STEPS GRID
+   HOMEPAGE - CTA STEPS GRID
    ============================ */
 
 .steps-grid {
@@ -1628,7 +1628,7 @@ h1 {
 }
 
 /* ============================
-   HOMEPAGE — LARGE CTA BUTTON
+   HOMEPAGE - LARGE CTA BUTTON
    ============================ */
 
 .cta-main-btn {
@@ -1637,7 +1637,7 @@ h1 {
 }
 
 /* ============================
-   MOBILE — ≤ 900px additions
+   MOBILE - ≤ 900px additions
    ============================ */
 
 @media (max-width: 900px) {
