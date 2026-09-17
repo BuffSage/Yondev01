@@ -1,46 +1,3 @@
-/* --- Cookie Consent Modal Custom Checkbox Styles --- */
-.cookie-modal-content input[type="checkbox"] {
-  appearance: none;
-  width: 22px;
-  height: 22px;
-  border: 2px solid var(--accent, #0078d4);
-  border-radius: 6px;
-  background: #fff;
-  display: inline-block;
-  position: relative;
-  margin: 0;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-  vertical-align: middle;
-}
-
-.cookie-modal-content input[type="checkbox"]:checked {
-  background: var(--accent, #0078d4);
-  border-color: var(--accent, #0078d4);
-}
-
-.cookie-modal-content input[type="checkbox"]:checked::after {
-  content: '';
-  position: absolute;
-  left: 6px;
-  top: 2px;
-  width: 6px;
-  height: 12px;
-  border: solid #fff;
-  border-width: 0 3px 3px 0;
-  transform: rotate(45deg);
-}
-
-.cookie-modal-content input[type="checkbox"]:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.2);
-}
-
-.cookie-modal-content label {
-  user-select: none;
-  cursor: pointer;
-}
-
 :root {
   --primary: #5f7044;
   --accent: #ffcf40;
@@ -468,17 +425,6 @@ img {
   .mobile-menu a {
     font-size: 1.08rem;
     padding: 10px 2px;
-  }
-
-  .cookie-banner {
-    font-size: 0.97rem;
-    padding: 6px 4px;
-    min-height: 28px;
-  }
-
-  .cookie-modal-content {
-    max-width: 98vw;
-    padding: 10px 2vw;
   }
 
   .footer {
@@ -1166,63 +1112,388 @@ h1 {
   border: 0;
 }
 
-/* Cookie banner & modal */
-.cookie-banner {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #000;
-  color: #fff;
-  padding: 8px 12px;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-  text-align: center;
+/* ==========================================================================
+   Klaro Cookie Consent - Clean Yondev Theme (No gradients, no AI slop)
+   ========================================================================== */
+
+.klaro {
+  --font-family: inherit;
+  --font-size: 14px;
 }
 
-.cookie-actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center
+.klaro * {
+  box-sizing: border-box;
+  font-family: inherit;
 }
 
-.cookie-modal {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, .6);
-  z-index: 101;
+/* --- Notice Popup (Bottom-Right Banner) --- */
+.klaro .cookie-notice:not(.cookie-modal-notice) {
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+  padding: 20px !important;
+  z-index: 9999 !important;
+  transition: opacity 0.2s ease !important;
 }
 
-.cookie-modal.hidden {
-  display: none
+[data-theme="dark"] .klaro .cookie-notice:not(.cookie-modal-notice) {
+  background-color: var(--surface) !important;
+  border-color: var(--line) !important;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45) !important;
 }
 
-.cookie-modal-content {
-  background: var(--surface);
-  color: var(--text);
-  padding: 24px;
-  border-radius: 14px;
-  max-width: 400px;
-  text-align: center;
-  position: relative;
+@media (min-width: 1024px) {
+  .klaro .cookie-notice:not(.cookie-modal-notice) {
+    position: fixed !important;
+    bottom: 24px !important;
+    right: 24px !important;
+    left: auto !important;
+    top: auto !important;
+    border-radius: 12px !important;
+    max-width: 380px !important;
+    width: 100% !important;
+  }
 }
 
-.cookie-close {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: var(--text);
+@media (max-width: 1023px) {
+  .klaro .cookie-notice:not(.cookie-modal-notice) {
+    position: fixed !important;
+    bottom: 16px !important;
+    left: 16px !important;
+    right: 16px !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    border-radius: 12px !important;
+    padding: 18px !important;
+  }
+}
+
+.klaro .cookie-notice .cn-body {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.klaro .cookie-notice .cn-body p {
+  color: var(--muted) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.5 !important;
+  margin: 0 0 14px 0 !important;
+}
+
+.klaro .cookie-notice .cn-body p:first-of-type::before {
+  content: "Ihre Privatsphäre";
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text) !important;
+  margin-bottom: 6px;
+}
+
+[lang="en"] .klaro .cookie-notice .cn-body p:first-of-type::before {
+  content: "Privacy Preferences";
+}
+
+.klaro .cookie-notice .cn-ok {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin-top: 0 !important;
+}
+
+.klaro .cookie-notice .cn-buttons {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Buttons inside Notice and Modal */
+.klaro .cm-btn {
+  font-family: inherit !important;
+  font-size: 0.86rem !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  padding: 8px 14px !important;
+  cursor: pointer !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
+  text-decoration: none !important;
+  border: 1px solid transparent !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1.4 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Primary "Alle akzeptieren" button */
+.klaro .cm-btn.cm-btn-success,
+.klaro .cm-btn.cm-btn-accept-all {
+  background-color: var(--accent) !important;
+  color: #101418 !important;
+  border: 1px solid var(--accent) !important;
+  flex: 1 1 120px !important;
+}
+
+.klaro .cm-btn.cm-btn-success:hover,
+.klaro .cm-btn.cm-btn-accept-all:hover {
+  background-color: #f0be28 !important;
+  border-color: #f0be28 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Secondary "Ablehnen" button */
+.klaro .cm-btn.cm-btn-danger,
+.klaro .cm-btn.cm-btn-decline {
+  background-color: transparent !important;
+  color: var(--text) !important;
+  border: 1px solid var(--line) !important;
+  flex: 1 1 90px !important;
+}
+
+.klaro .cm-btn.cm-btn-danger:hover,
+.klaro .cm-btn.cm-btn-decline:hover {
+  background-color: var(--hover) !important;
+  border-color: var(--muted) !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Save Selection / Accept button */
+.klaro .cm-btn.cm-btn-accept {
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--line) !important;
+}
+
+.klaro .cm-btn.cm-btn-accept:hover {
+  background-color: var(--hover) !important;
+  border-color: var(--muted) !important;
+  transform: none !important;
+}
+
+/* "Einstellungen anpassen" button / link */
+.klaro .cm-btn.cm-btn-info,
+.klaro .cookie-notice .cn-learn-more {
+  background-color: transparent !important;
+  color: var(--muted) !important;
+  border: 1px solid transparent !important;
+  width: 100% !important;
+  padding: 6px 10px !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+}
+
+.klaro .cm-btn.cm-btn-info:hover,
+.klaro .cookie-notice .cn-learn-more:hover {
+  background-color: transparent !important;
+  color: var(--text) !important;
+  border-color: transparent !important;
+  transform: none !important;
+}
+
+/* --- Preferences Modal --- */
+.klaro .cookie-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  z-index: 10001 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+}
+
+.klaro .cookie-modal .cm-modal {
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16) !important;
+  max-width: 520px !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  position: relative !important;
+  max-height: 88vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+[data-theme="dark"] .klaro .cookie-modal .cm-modal {
+  background-color: var(--surface) !important;
+  border-color: var(--line) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55) !important;
+}
+
+/* Modal Header */
+.klaro .cookie-modal .cm-modal .cm-header {
+  padding: 18px 22px 14px !important;
+  border-bottom: 1px solid var(--line) !important;
+  position: relative !important;
+}
+
+.klaro .cookie-modal .cm-modal .cm-header h1.title {
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--text) !important;
+  margin: 0 !important;
+  padding-right: 32px !important;
+}
+
+/* Close 'X' Button in Modal */
+.klaro .cookie-modal .cm-modal .hide {
+  position: absolute !important;
+  top: 14px !important;
+  right: 14px !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: background-color 0.15s ease, color 0.15s ease !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+.klaro .cookie-modal .cm-modal .hide svg {
+  stroke: var(--muted) !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.klaro .cookie-modal .cm-modal .hide:hover {
+  background: var(--hover) !important;
+  transform: none !important;
+}
+
+.klaro .cookie-modal .cm-modal .hide:hover svg {
+  stroke: var(--text) !important;
+}
+
+/* Modal Body */
+.klaro .cookie-modal .cm-modal .cm-body {
+  padding: 18px 22px !important;
+  overflow-y: auto !important;
+  flex: 1 1 auto !important;
+}
+
+.klaro .cookie-modal .cm-modal .cm-body p {
+  color: var(--muted) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.5 !important;
+  margin: 0 0 14px 0 !important;
+}
+
+.klaro .cookie-modal .cm-modal .cm-body a {
+  color: var(--text) !important;
+  font-weight: 500 !important;
+  text-decoration: underline !important;
+}
+
+/* Purpose & Service Rows */
+.klaro .cm-switch-container {
+  border-top: 1px solid var(--line) !important;
+  padding: 14px 0 14px 50px !important;
+  position: relative !important;
+}
+
+.klaro .cm-list-title {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: var(--text) !important;
+}
+
+.klaro .cm-required,
+.klaro .cm-opt-out {
+  font-size: 0.78rem !important;
+  color: var(--muted) !important;
+  font-weight: 400 !important;
+  margin-left: 6px !important;
+}
+
+.klaro .cm-switch-container p.purposes {
+  font-size: 0.82rem !important;
+  color: var(--muted) !important;
+  margin: 4px 0 0 0 !important;
+  line-height: 1.45 !important;
+}
+
+/* Clean Toggle Switches */
+.klaro .cm-switch {
+  position: absolute !important;
+  left: 0 !important;
+  top: 14px !important;
+  width: 38px !important;
+  height: 22px !important;
+}
+
+.klaro .slider {
+  background-color: var(--line) !important;
+  border-radius: 20px !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.klaro .slider::before {
+  background-color: #ffffff !important;
+  border-radius: 50% !important;
+  width: 16px !important;
+  height: 16px !important;
+  left: 3px !important;
+  bottom: 3px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+  transition: transform 0.2s ease !important;
+}
+
+.klaro .cm-list-input:checked + .cm-list-label .slider {
+  background-color: var(--accent) !important;
+}
+
+.klaro .cm-list-input:checked + .cm-list-label .slider::before {
+  transform: translateX(16px) !important;
+  background-color: #101418 !important;
+}
+
+.klaro .cm-list-input.required:checked + .cm-list-label .slider,
+.klaro .cm-list-input.only-required + .cm-list-label .slider {
+  background-color: var(--line) !important;
+  opacity: 0.8 !important;
+}
+
+.klaro .cm-list-input.required:checked + .cm-list-label .slider::before,
+.klaro .cm-list-input.only-required + .cm-list-label .slider::before {
+  background-color: var(--muted) !important;
+}
+
+/* Modal Footer */
+.klaro .cookie-modal .cm-modal .cm-footer {
+  padding: 14px 22px !important;
+  border-top: 1px solid var(--line) !important;
+  background-color: var(--bg) !important;
+}
+
+.klaro .cookie-modal .cm-modal .cm-footer-buttons {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  justify-content: flex-end !important;
+}
+
+.klaro .cookie-modal .cm-modal .cm-footer .cm-powered-by {
+  display: none !important;
 }
 
 /* Back to top button */
@@ -1405,6 +1676,20 @@ h1 {
 .legal-card-wrapper {
   border-radius: 20px;
   overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  cursor: default;
+  transition: none;
+  transform: none !important;
+}
+
+.legal-card-wrapper:hover,
+.legal-card-wrapper:focus-within,
+.legal-card-wrapper.card:hover,
+.legal-card-wrapper.card:focus-within {
+  transform: none !important;
+  box-shadow: var(--shadow) !important;
 }
 
 .legal-tabs {
@@ -1413,6 +1698,13 @@ h1 {
   margin-bottom: 0;
   gap: 0;
   background: var(--surface);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.legal-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .legal-tab {
@@ -1420,13 +1712,14 @@ h1 {
   border: none;
   border-bottom: 3px solid transparent;
   margin-bottom: -1px;
-  padding: 14px 28px;
-  font-size: 1rem;
+  padding: 14px 24px;
+  font-size: 0.98rem;
   font-weight: 600;
   color: var(--muted);
   cursor: pointer;
   transition: color 0.2s, border-color 0.2s;
   font-family: inherit;
+  white-space: nowrap;
 }
 
 .legal-tab:hover {

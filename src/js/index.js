@@ -24,10 +24,6 @@ const texts = {
         desc: "Business website for an asbestos & pollutant remediation company.",
         tags: ["Web Design", "Email System", "Google Business"]
       },
-      tanoffice: {
-        desc: "Business Website and Logo for tanning salon management software.",
-        tags: ["Web Design", "Logo Design", "Contact Form"]
-      },
       nosmet: {
         desc: "Upcoming communication training program.",
         tags: ["Web Design"]
@@ -62,10 +58,6 @@ const texts = {
       ndn: {
         desc: "Firmenwebsite für ein Unternehmen zur Asbest- und Schadstoffsanierung.",
         tags: ["Web Design", "Email System", "Google Business"]
-      },
-      tanoffice: {
-        desc: "Firmenwebsite und Logo für Sonnenstudio-Management-Software.",
-        tags: ["Web Design", "Logo-Design", "Kontaktformular"]
       },
       nosmet: {
         desc: "Kommendes Kommunikationstraining-Programm.",
@@ -134,14 +126,6 @@ const getContent = (lang) => {
           <h3><a href="https://ndn-sanierung.de" target="_blank" rel="noopener">NDN-Sanierung.de</a></h3>
           <p>${t.projects.ndn.desc}</p>
           <div class="project-tags">${t.projects.ndn.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}</div>
-        </article>
-        <article class="card project-card">
-          <a href="https://tanoffice.de" target="_blank" rel="noopener" class="project-logo-wrap">
-            <img src="src/assets/images/TanOfficeYondev.png" alt="TanOffice logo" class="project-logo">
-          </a>
-          <h3><a href="https://tanoffice.de" target="_blank" rel="noopener">TanOffice.de</a></h3>
-          <p>${t.projects.tanoffice.desc}</p>
-          <div class="project-tags">${t.projects.tanoffice.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}</div>
         </article>
         <article class="card project-card">
           <a href="https://nosmet.org" target="_blank" rel="noopener" class="project-logo-wrap" style="background: #ffffff;">
